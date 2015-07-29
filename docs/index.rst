@@ -32,8 +32,6 @@ The current development SNAPSHOT is available at:
 
 - http://software.in2p3.fr/jsaga/dev/
 
-In the contest of the CHAIN_REDS_ project a new JSAGA adaptor for OCCI-complaint [3_] cloud middleware has been developed to demonstrate the interoperatibility between different open-source cloud providers.
-
 Using the jOCCI APIs developed by CESNET_, the adaptor takes care of: 
 
 (i) switching-on the VM pre-installed with the required application, 
@@ -150,17 +148,11 @@ Usage
 - Testing are classified in differents sets:
 
    * rOCCIJobDescriptionTest: tests if SAGA attributes are supported. Do not submit any jobs
-
    * rOCCIJobRunMinimalTest: submit a very simple job "/bin/date" and checks that status is OK
-
-   * rOCCIJobRunRequiredTest: test the CANCEL and the FAILED status
-        
+   * rOCCIJobRunRequiredTest: test the CANCEL and the FAILED status       
    * rOCCIJobRunOptionalTest: test SUSPEND/RESUME
-
    * rOCCIJobRunSandboxTest: test jobs with input and/or output sandbox
-
    * rOCCIJobRunInfoTest: test retrieving of job info (dates, hosts, exit code...)
-
    * rOCCIJobRunInteractiveTest: submit an interactive job
 
 .. code:: bash
@@ -430,5 +422,5 @@ Please feel free to contact us any time if you have any questions or comments.
  
  Giuseppe LA ROCCA - Italian National Institute of Nuclear Physics (INFN_),
 
- Lionel Schwarz - Institut National de Physique Nuclear et de Physique des Particules (IN2P3_)
+ Lionel SCHWARZ - Institut National de Physique Nuclear et de Physique des Particules (IN2P3_)
  
