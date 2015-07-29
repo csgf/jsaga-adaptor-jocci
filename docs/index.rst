@@ -78,6 +78,11 @@ Installation
             <version>3.3</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+        <dependency>
             <groupId>cz.cesnet.cloud</groupId>
             <artifactId>jocci-api</artifactId>
             <version>0.2.0</version>
