@@ -236,9 +236,6 @@ Usage
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: VM Title     = jOCCI-VM
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: OS           = uuid_chain_reds_generic_vm_fedcloud_dukan_100
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: Flavour      = small
- SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
- SLF4J: Defaulting to no-operation (NOP) logger implementation
- SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: [ TEMPLATE ]
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: - Available os template mixins ...
