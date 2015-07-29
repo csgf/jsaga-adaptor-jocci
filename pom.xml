@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>fr.in2p3.jsaga.adaptor</groupId>
+        <artifactId>adaptors</artifactId>
+        <version>1.2.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>jsaga-adaptor-jocci</artifactId>
+    <name>Adaptors for jOCCI</name>
+    <description>This module provides support for the jOCCI service.</description>
+    <licenses>
+        <license>
+            <name>Apache Software Foundation Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Giuseppe LA ROCCA</name>
+            <email>giuseppe.larocca@ct.infn.it</email>
+            <organization>INFN</organization>
+            <organizationUrl>http://www.ct.infn.it</organizationUrl>
+            <properties>
+                <organizationLogoUrl>http://www.ct.infn.it/templates/jsn_dome_free/images/logo.png</organizationLogoUrl>
+            </properties>
+        </developer>
+    </developers>
+    <dependencies>
+        <dependency>
+            <groupId>fr.in2p3.jsaga.adaptor</groupId>
+            <artifactId>jsaga-adaptor-ssh3</artifactId>
+            <version>1.2.0-SNAPSHOT</version>
+           <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>fr.in2p3.jsaga.adaptor</groupId>
+            <artifactId>jsaga-adaptor-voms</artifactId>
+            <version>1.2.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>fr.in2p3.jsaga</groupId>
+            <artifactId>jsaga-engine</artifactId>
+            <version>1.2.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>cz.cesnet.cloud</groupId>
+            <artifactId>jocci-api</artifactId>
+            <version>0.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>cz.cesnet.cloud</groupId>
+            <artifactId>jocci-core</artifactId>
+            <version>0.1.4</version>
+        </dependency>
+    </dependencies>
+</project>
