@@ -58,21 +58,19 @@
             <groupId>cz.cesnet.cloud</groupId>
             <artifactId>jocci-api</artifactId>
             <version>0.2.0</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>cz.cesnet.cloud</groupId>
             <artifactId>jocci-core</artifactId>
             <version>0.2.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <repositories>
        <repository>
            <id>CC-IN2P3 maven repository</id>
            <url>http://maven.in2p3.fr/</url>
-       </repository>
-       <repository>
-           <id>jOCCI repository</id>
-           <url>http://github.com/EGI-FCTF/jOCCI-core/</url>
        </repository>
    </repositories>
 </project>
