@@ -35,7 +35,7 @@ import cz.cesnet.cloud.occi.api.exception.CommunicationException;
 import cz.cesnet.cloud.occi.api.exception.EntityBuildingException;
 import cz.cesnet.cloud.occi.api.http.HTTPClient;
 import cz.cesnet.cloud.occi.api.http.auth.HTTPAuthentication;
-import cz.cesnet.cloud.occi.api.http.auth.X509Authentication;
+import cz.cesnet.cloud.occi.api.http.auth.VOMSAuthentication;
 import cz.cesnet.cloud.occi.core.ActionInstance;
 import cz.cesnet.cloud.occi.core.Entity;
 import cz.cesnet.cloud.occi.core.Link;
@@ -97,8 +97,8 @@ import org.apache.commons.net.telnet.TelnetClient;
  * File:    jOCCIJobControlAdaptor.java
  * Authors: Giuseppe LA ROCCA
  * Email:   giuseppe.larocca@ct.infn.it
- * Ver.:    1.0.6
- * Date:    14 May 2015
+ * Ver.:    0.0.1
+ * Date:    29 July 2015
  * *********************************************/
 
 public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
@@ -335,7 +335,7 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                 log.info("- Trigger a 'stop' action to the resource");                
                 
                 HTTPAuthentication authentication =
-                new X509Authentication(user_cred, "password");
+                new VOMSAuthentication(user_cred);
                         
                 //set custom certificates if needed
                 authentication.setCAPath(ca_path);
@@ -410,7 +410,7 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                     log.info("Flavour      = " + mixin_resource_tpl);
                                 
                 HTTPAuthentication authentication =
-                new X509Authentication(user_cred, "password");
+                new VOMSAuthentication(user_cred);
                 
                 //set custom certificates if needed
                 authentication.setCAPath(ca_path);
@@ -470,7 +470,7 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                         Resource resource = (Resource) entity;
                         
                         Set<Link> links = 
-                        resource.getLinks(NetworkInterface.getTermDefault());
+                        resource.getLinks(NetworkInterface.TERM_DEFAULT);
                         
                         for (Link link : links)
                         _publicIP = link.getValue(IPNetworkInterface.ADDRESS_ATTRIBUTE_NAME);
