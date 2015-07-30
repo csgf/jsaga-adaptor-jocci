@@ -8,8 +8,7 @@
 - JDK 6+
 - Maven
 - JSAGA libs (v1.1.2+)
-- jocci-api (v0.1.5)
-- jocci-core (v0.1.4)
+- jocci-api (v0.2.0)
 
 <h2>About the JSAGA Adaptor</h2>
 Using the JSAGA adaptor for OCCI-compliant cloud middleware stacks supporting the OCCI standard, user can: 
