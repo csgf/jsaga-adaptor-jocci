@@ -87,11 +87,6 @@ Installation
             <artifactId>jocci-api</artifactId>
             <version>0.2.0</version>
         </dependency>
-        <dependency>
-            <groupId>cz.cesnet.cloud</groupId>
-            <artifactId>jocci-core</artifactId>
-            <version>0.2.0</version>
-        </dependency>
     </dependencies>
     <repositories>
        <repository>
