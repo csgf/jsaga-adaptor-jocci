@@ -2,7 +2,7 @@
     <parent>
         <groupId>fr.in2p3.jsaga.adaptor</groupId>
         <artifactId>adaptors</artifactId>
-        <version>0.2.0</version>
+        <version>1.2.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jsaga-adaptor-jocci</artifactId>
@@ -25,12 +25,6 @@
             </properties>
         </developer>
     </developers>
-    <repositories>
-       <repository>
-           <id>CC-IN2P3 maven repository</id>
-           <url>http://maven.in2p3.fr/</url>
-       </repository>
-    </repositories>
     <dependencies>
         <dependency>
             <groupId>fr.in2p3.jsaga.adaptor</groupId>
@@ -56,19 +50,25 @@
             <version>3.3</version>
         </dependency>
         <dependency>
-    	    <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.6.1</version>
-        </dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-jdk14</artifactId>
+	    <version>1.7.12</version>
+	</dependency>
         <dependency>
             <groupId>cz.cesnet.cloud</groupId>
             <artifactId>jocci-api</artifactId>
-            <version>0.1.5</version>
+            <version>0.2.0</version>
         </dependency>
         <dependency>
             <groupId>cz.cesnet.cloud</groupId>
             <artifactId>jocci-core</artifactId>
-            <version>0.1.4</version>
+            <version>0.2.0</version>
         </dependency>
     </dependencies>
+    <repositories>
+       <repository>
+           <id>CC-IN2P3 maven repository</id>
+           <url>http://maven.in2p3.fr/</url>
+       </repository>
+   </repositories>
 </project>

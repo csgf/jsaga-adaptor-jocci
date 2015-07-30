@@ -93,25 +93,18 @@ Installation
             <version>0.2.0</version>
         </dependency>
     </dependencies>
+    <repositories>
+       <repository>
+           <id>CC-IN2P3 maven repository</id>
+           <url>http://maven.in2p3.fr/</url>
+       </repository>
+    </repositories>
 
 ============
 Usage
 ============
 
-- Create a RFC proxy certificate for your given VO and save it in the path defined by the **UserProxy** env. variable:
-
-.. code:: bash
-
-   ]$ voms-proxy-init --voms vo.chain-project.eu -rfc
-   Enter GRID pass phrase for this identity:
-   Contacting voms.ct.infn.it:15011
-   [/C=IT/O=INFN/OU=Host/L=Catania/CN=voms.ct.infn.it] "vo.chain-project.eu".
-   Remote VOMS server contacted succesfully.
-
-   Created proxy in /tmp/x509up_u501.
-   Your proxy is valid until Wed Jun 03 22:38:16 CEST 2015
-
-- Configure the security context for testing the new JSAGA Adaptor
+- Configure the security context for testing the new JSAGA Adaptor:
 
 .. code:: bash
 
@@ -139,26 +132,43 @@ Usage
     </session>
   </jsaga-default>
 
-- Create the service URL and some additional settings for testing the JSAGA Adaptor
+- Create a RFC proxy certificate for your given VO:
+
+.. code:: bash
+
+   ]$ voms-proxy-init --voms vo.chain-project.eu -rfc
+   Enter GRID pass phrase for this identity:
+   Contacting voms.ct.infn.it:15011
+   [/C=IT/O=INFN/OU=Host/L=Catania/CN=voms.ct.infn.it] "vo.chain-project.eu".
+   Remote VOMS server contacted succesfully.
+
+   Created proxy in /tmp/x509up_u501.
+   Your proxy is valid until Wed Jun 03 22:38:16 CEST 2015
+
+   ]$ cp /tmp/x509up_u501 ${user.home}/.jsaga/contexts/jOCCI/proxy
+
+- Create the service URL and some additional settings for testing the JSAGA Adaptor:
 
 .. code:: bash
 
  ]$ mkdir -p ${HOME}/.jsaga/context/jOCCI
  ]$ cd ${HOME}/.jsaga
+ 
  ]$ cat saga-test.properties 
- jocci.jobservice.url=jocci://carach5.ics.muni.cz:11443/?attributes_title=jOCCI-VM&\
-                      mixin_os_tpl=uuid_chain_reds_generic_vm_fedcloud_dukan_100&\
-                      mixin_resource_tpl=small
+ jocci.jobservice.url=
+        jocci://carach5.ics.muni.cz:11443/?attributes_title=jOCCI-VM&\
+        mixin_os_tpl=uuid_chain_reds_generic_vm_fedcloud_dukan_100&\
+        mixin_resource_tpl=small
 
 - Testing are classified in differents sets:
 
-   * rOCCIJobDescriptionTest: tests if SAGA attributes are supported. Do not submit any jobs
-   * rOCCIJobRunMinimalTest: submit a very simple job "/bin/date" and checks that status is OK
-   * rOCCIJobRunRequiredTest: test the CANCEL and the FAILED status       
-   * rOCCIJobRunOptionalTest: test SUSPEND/RESUME
-   * rOCCIJobRunSandboxTest: test jobs with input and/or output sandbox
-   * rOCCIJobRunInfoTest: test retrieving of job info (dates, hosts, exit code...)
-   * rOCCIJobRunInteractiveTest: submit an interactive job
+   * jOCCIJobDescriptionTest: tests if SAGA attributes are supported. Do not submit any jobs
+   * jOCCIJobRunMinimalTest: submit a very simple job "/bin/date" and checks that status is OK
+   * jOCCIJobRunRequiredTest: test the CANCEL and the FAILED status       
+   * jOCCIJobRunOptionalTest: test SUSPEND/RESUME
+   * jOCCIJobRunSandboxTest: test jobs with input and/or output sandbox
+   * jOCCIJobRunInfoTest: test retrieving of job info (dates, hosts, exit code...)
+   * jOCCIJobRunInteractiveTest: submit an interactive job
 
 .. code:: bash
 
@@ -214,7 +224,8 @@ Usage
  Running integration.jOCCIExecutionTestSuite$jOCCIJobRunMinimalTest
  INFO integration.jOCCIExecutionTestSuite$jOCCIJobRunMinimalTest: test_run running...
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
- INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: Trying to connect to the cloud host [ carach5.ics.muni.cz ] 
+ INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: Trying to connect to the cloud host 
+                                                                 [ carach5.ics.muni.cz ] 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: See below the details: 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
@@ -240,6 +251,7 @@ Usage
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: [ TEMPLATE ]
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: - Available os template mixins ...
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
+
  Category{term=uuid_chain_reds_aleph2000_fedcloud_dukan_105, 
  scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, 
  title=CHAIN-REDS-ALEPH2000@fedcloud-dukan, 
@@ -289,6 +301,7 @@ Usage
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: [ CREATE ]
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
+
  Category: uuid_chain_reds_generic_vm_fedcloud_dukan_100;
  scheme="http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#";
  class="mixin";title="CHAIN-REDS-Generic-VM@fedcloud-dukan";
@@ -302,6 +315,7 @@ Usage
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: [ DESCRIPTION ]
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: - Getting VM settings
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
+
  Category: compute;
            scheme="http://schemas.ogf.org/occi/infrastructure#";
            class="kind"
@@ -317,6 +331,7 @@ Usage
  Category: user_data;
            scheme="http://schemas.openstack.org/compute/instance#";
            class="mixin"
+
  X-OCCI-Attribute: occi.compute.cores=1
  X-OCCI-Attribute: occi.compute.memory=2.0
  X-OCCI-Attribute: occi.compute.state="waiting"
@@ -327,42 +342,41 @@ Usage
  X-OCCI-Attribute: org.opennebula.compute.id=56252
  X-OCCI-Attribute: org.openstack.compute.user_data="I2Nsb3VkLWNvbmZpZwojIHNlZSBodHRwczovL2hlbH[..]wKCg=="
  Link: </network/24>;
-       rel="http://schemas.ogf.org/occi/infrastructure#network";
-       self="/link/networkinterface/compute_56252_nic_0";
-       category="http://schemas.ogf.org/occi/infrastructure#networkinterface 
-                 http://opennebula.org/occi/infrastructure#networkinterface 
-                 http://schemas.ogf.org/occi/infrastructure/networkinterface#ipnetworkinterface";
-       occi.core.id="compute_56252_nic_0";
-       occi.core.source="/compute/56252";
-       occi.core.target="/network/24";
-       occi.core.title="public";
-       occi.networkinterface.address="147.228.242.36";
-       occi.networkinterface.interface="eth0";
-       occi.networkinterface.mac="02:00:93:e4:f2:24";
-       occi.networkinterface.state="inactive";
-       org.opennebula.networkinterface.bridge="onebr0";
+  rel="http://schemas.ogf.org/occi/infrastructure#network";
+  self="/link/networkinterface/compute_56252_nic_0";
+  category="http://schemas.ogf.org/occi/infrastructure#networkinterface 
+            http://opennebula.org/occi/infrastructure#networkinterface 
+            http://schemas.ogf.org/occi/infrastructure/networkinterface#ipnetworkinterface";
+  occi.core.id="compute_56252_nic_0";
+  occi.core.source="/compute/56252";
+  occi.core.target="/network/24";
+  occi.core.title="public";
+  occi.networkinterface.address="147.228.242.36";
+  occi.networkinterface.interface="eth0";
+  occi.networkinterface.mac="02:00:93:e4:f2:24";
+  occi.networkinterface.state="inactive";
+  org.opennebula.networkinterface.bridge="onebr0";
 
  Link: </storage/789>;
-       rel="http://schemas.ogf.org/occi/infrastructure#storage";
-       self="/link/storagelink/compute_56252_disk_0";
-       category="http://schemas.ogf.org/occi/infrastructure#storagelink 
-                 http://opennebula.org/occi/infrastructure#storagelink";
-       occi.core.id="compute_56252_disk_0";
-       occi.core.source="/compute/56252";
-       occi.core.target="/storage/789";
-       occi.core.title="74e7eed0-af89-5e74-b7b0-72011db131c6";
-       occi.storagelink.deviceid="/dev/vda";
-       occi.storagelink.state="inactive";
+  rel="http://schemas.ogf.org/occi/infrastructure#storage";
+  self="/link/storagelink/compute_56252_disk_0";
+  category="http://schemas.ogf.org/occi/infrastructure#storagelink 
+            http://opennebula.org/occi/infrastructure#storagelink";
+  occi.core.id="compute_56252_disk_0";
+  occi.core.source="/compute/56252";
+  occi.core.target="/storage/789";
+  occi.core.title="74e7eed0-af89-5e74-b7b0-72011db131c6";
+  occi.storagelink.deviceid="/dev/vda";
+  occi.storagelink.state="inactive";
 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: Waiting the remote VM finishes the boot!
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: Wed 2015.07.29 at 02:48:43 PM CEST
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
- INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
  Waiting [ https://carach5.ics.muni.cz:11443/compute/56252 ] becomes ACTIVE! 
 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: Starting VM [ 147.228.242.36 ] in progress...
- INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: This operation may take few minutes to complete. Please wait!
+ INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: This operation may take few minutes to complete.
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: [ STATUS ] = waiting
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor: [ STATUS ] = waiting
@@ -386,10 +400,13 @@ Usage
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobMonitorAdaptor: 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobMonitorAdaptor: Calling the getStatus() method
  DEBUG it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobMonitorAdaptor: State changed to ssh:
- Done for job [jocci://carach5.ics.muni.cz:11443/?attributes_title=jOCCI-VM&\
-               mixin_os_tpl=uuid_chain_reds_generic_vm_fedcloud_dukan_100&\
-               mixin_resource_tpl=small]-\
-               [38e7bf2c-4f5b-49cb-a001-65218d856db0@147.228.242.36#https://carach5.ics.muni.cz:11443/compute/56252]
+ 
+ Done for job 
+ [jocci://carach5.ics.muni.cz:11443/?attributes_title=jOCCI-VM&\
+  mixin_os_tpl=uuid_chain_reds_generic_vm_fedcloud_dukan_100&\
+  mixin_resource_tpl=small]-\
+  [38e7bf2c-4f5b-49cb-a001-65218d856db0@147.228.242.36#https://carach5.ics.muni.cz:11443/compute/56252]
+ 
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobMonitorAdaptor: Calling the getCreated() method
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobMonitorAdaptor: Calling the getStarted() method
  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobMonitorAdaptor: Calling the getFinished() method
