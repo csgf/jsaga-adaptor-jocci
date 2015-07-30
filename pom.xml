@@ -70,5 +70,9 @@
            <id>CC-IN2P3 maven repository</id>
            <url>http://maven.in2p3.fr/</url>
        </repository>
+       <repository>
+           <id>Maven repository</id>
+           <url>http://search.maven.org/</url>
+       </repository>
    </repositories>
 </project>

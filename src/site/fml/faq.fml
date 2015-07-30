@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs title="Frequently Asked Questions">
+    <part id="module">
+        <title>Adaptor module</title>
+        <faq id="jsaga-help">
+            <question>How do I use this module ?</question>
+            <answer>The command "jsaga-help" provides some useful information about the usage
+                and the current configuration of the plug-ins.
+                <pre>jsaga-help -help</pre>
+                If this command does not provides the answer to your question, then
+                please contact us so that we can fill out this FAQ.
+            </answer>
+        </faq>
+    </part>
+    <part id="security">
+        <title>Security</title>
+        <faq id="context">
+            <question>What security context should I use ?</question>
+            <answer>Use a context of type "rocci". This context encapsulates both a VOMS context (for accessing the OCCI server)
+            and a SSH context (for accessing the instanciated VM). Please refer to documentation of the SSH and the VOMS context for available
+            attributes.</answer>
+        </faq>
+        <faq id="testbed">
+        <question>Where can I run the adaptor ?</question>
+            <answer>
+        The following adaptor has been successfully tested on the EGI FedCloud testbed.
+        For further information about the testbed, please refer to this web link:
+        https://wiki.egi.eu/wiki/Fedcloud-tf:FederatedCloudsTaskForce
+            </answer>
+        </faq>
+        <faq id="access">
+            <question>How to get access to the EGI FedCloud ?</question>
+            <answer>
+        Please, follow the instructions reported in the web link:
+                https://wiki.egi.eu/wiki/Fedcloud-tf:Users
+        </answer>
+        </faq>
+    </part>
+    <part id="execution">
+        <title>Execution management</title>
+        <faq id="url">
+            <question>What is the URL syntax understood by this plug-in ?</question>
+            <answer>The URL must be:
+                <pre><![CDATA[rocci://<HOSTNAME>[:<PORT>]/[?<PARAMETERS>]
+Where:
+    <HOSTNAME> is the OCCI server URI
+    <PORT> is the port used by the OCCI server for the incoming connections (default is 11443). 
+    <PARAMETERS> are mandatory parameters described in the following section.
+    
+E.g.: rocci://carach5.ics.muni.cz:11443/
+      rocci://occi.cloud.gwdg.de:3100/
+      rocci://okeanos-occi2.hellasgrid.gr:9000/
+      rocci://egi-cloud.zam.kfa-juelich.de:8787/
+      rocci://egi.cloud.pdc.kth.se:443/
+      rocci://cloud.cesga.es:3202/
+]]></pre>
+            </answer>
+        </faq>
+        <faq id="options">
+            <question>Which parameters can be specified in the service URL ?</question>
+            <answer>The URL parameters are:
+                <pre><![CDATA[
+resource=<RESOURCE>
+auth=<AUTH>
+attributes_title=<ATTRIBUTES>
+mixin_os_tpl=<MIXIN_OS_TPL>
+mixin_resource_tpl=<MIXIN_RESOURCE_TPL>
+prefix=<PREFIX>
+
+Where:
+    <RESOURCE> is the type of resource (default is "compute")
+    <AUTH> is the type of authentication (default is "x509")
+    <ATTRIBUTES> is a comma separated attributes for new resources such as title='Name'
+    <MIXIN_OS_TPL> is the name of the OS template (e.g. os_tpl#generic_vm)
+    <MIXIN_RESOURCE_TPL> is the name of the resource template (e.g. resource_tpl#small|medium|large|extra large)
+    <PREFIX> is the directory where the occi client binary is installed (optional is it is in the standard PATH)
+    
+E.g.: rocci://carach5.ics.muni.cz:11443/?attributes_title=MyDebianROCCITest&mixin_os_tpl=generic_vm&mixin_resource_tpl=small\
+]]></pre>
+        </answer>
+        </faq>
+    </part>
+</faqs>

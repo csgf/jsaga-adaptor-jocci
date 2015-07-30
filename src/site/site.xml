@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="JSAGA">
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-skin-jsaga</artifactId>
+        <version>1.0</version>
+    </skin>
+    <bannerLeft><src>images/logo-jsaga.png</src><alt>JSAGA</alt></bannerLeft>
+    <bannerRight><src>images/logo-cc.png</src><alt>CC-IN2P3</alt></bannerRight>
+    <publishDate position="right"/>
+    <version position="right"/>
+    <body>
+        <links>
+            <item name="ANR" href="http://www.agence-nationale-recherche.fr"/>
+            <item name="CNRS" href="http://www.cnrs.fr"/>
+            <item name="CC-IN2P3" href="http://cc.in2p3.fr"/>
+        </links>
+        <breadcrumbs>
+            <item name="JSAGA" href="../../index.html"/>
+            <item name="Adaptors" href="../../adaptors.html"/>
+            <item name="${project.name}" href=""/>
+        </breadcrumbs>
+        <menu name="JSAGA">
+            <item name="Welcome" href="../../index.html"/>
+        </menu>
+        <menu name="${project.name}">
+            <item name="Features" href="index.html"/>
+            <item name="FAQ" href="faq.html"/>
+            <item name="Example" href="example.html"/>
+        </menu>
+        <menu name="About" ref="reports"/>
+    </body>
+    <poweredBy>
+        <logo name="INFN Catania" href="http://www.ct.infn.it" img="http://www.infn.it/logo/weblogo5.gif"/>
+        <logo name="CHAIN-REDS" href="http://www.chain-project.eu/" img="http://www.chain-project.eu/documents/3456180/3536332/Logo"/>
+    </poweredBy>
+</project>
