@@ -3,6 +3,7 @@
         <groupId>fr.in2p3.jsaga.adaptor</groupId>
         <artifactId>adaptors</artifactId>
         <version>1.2.0-SNAPSHOT</version>
+        <packaging>jar</packaging>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jsaga-adaptor-jocci</artifactId>
@@ -71,8 +72,8 @@
            <url>http://maven.in2p3.fr/</url>
        </repository>
        <repository>
-           <id>Maven repository</id>
-           <url>http://search.maven.org/</url>
+           <id>jOCCI repository</id>
+           <url>http://github.com/EGI-FCTF/jOCCI-core/</url>
        </repository>
    </repositories>
 </project>
