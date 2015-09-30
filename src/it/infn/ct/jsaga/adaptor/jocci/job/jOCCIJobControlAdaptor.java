@@ -97,8 +97,8 @@ import org.apache.commons.net.telnet.TelnetClient;
  * File:    jOCCIJobControlAdaptor.java
  * Authors: Giuseppe LA ROCCA
  * Email:   giuseppe.larocca@ct.infn.it
- * Ver.:    0.0.1
- * Date:    29 July 2015
+ * Ver.:    1.0.6
+ * Date:    14 May 2015
  * *********************************************/
 
 public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
@@ -451,15 +451,21 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                     URI location = client.create(compute);
                     // Getting the list of available running resources
                     List<URI> list = client.list();
-                    URI uri_location = list.get(0);
+                    URI uri_location = null;                    
+                                        
+                    log.info("=============== [ R E P O R T ] ===============");                    
+                    for (URI uri : list) {
+                        if (uri.toString().contains("compute"))                                
+                                uri_location = uri;                        
+                    }
                     
-                    log.info("=============== [ R E P O R T ] ===============");
                     if (location != null) log.info(uri_location);
                     else log.error("Some errors occurred during the creation of a new resource.");
                     
                     // 3.) Describe resource
                     log.info("");log.info("[ DESCRIPTION ]");
-                    log.info("- Getting VM settings");
+                    log.info("- Getting settings for URI: ");
+                    log.info(uri_location);
                     List<Entity> entities = client.describe(uri_location);
                     log.info(entities.get(0).toText());
                     
