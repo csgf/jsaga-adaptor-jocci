@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsaga-default xmlns="http://www.in2p3.fr/jsaga/session">
+    <contexts>
+         <context type="jocci">
+            <attribute name="UserProxy" value="${user.home}/.jsaga/contexts/jOCCI/proxy"/>
+            <attribute name="CertRepository" value="/etc/grid-security/certificates/"/>
+            <attribute name="VomsDir" value="/etc/grid-security/vomsdir/"/>
+            <attribute name="UserID" value="root"/>
+            <attribute name="UserPrivateKey" value="${user.home}/.ssh/id_rsa"/>
+            <attribute name="UserPublicKey" value="${user.home}/.ssh/id_rsa.pub"/>
+            <data type="jocci"/>
+            <job type="jocci">
+                <attribute name="attributes_title" value="jOCCI-VM"/>
+                <attribute name="mixin_os_tpl" value="uuid_chain_reds_generic_vm_fedcloud_dukan_100"/>
+                <attribute name="mixin_resource_tpl" value="small"/>
+            </job>
+         </context>
+    </contexts>
+    <session>
+        <context type="jocci"/>
+    </session>
+</jsaga-default>
