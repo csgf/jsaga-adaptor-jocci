@@ -54,6 +54,8 @@ import org.ogf.saga.url.URLFactory;
 import fr.in2p3.jsaga.impl.job.instance.JobImpl;
 import fr.in2p3.jsaga.impl.job.service.JobServiceImpl;
 
+import java.math.BigInteger;
+import java.util.Random;
 import org.apache.log4j.Logger;
 
 /* *********************************************
@@ -61,15 +63,15 @@ import org.apache.log4j.Logger;
  * ***      Sezione di Catania (Italy)       ***
  * ***        http://www.ct.infn.it/         ***
  * *********************************************
- * File:    rOCCIJobControlAdaptor.java
- * Authors: Giuseppe LA ROCCA, Diego SCARDACI
- * Email:   <giuseppe.larocca, diego.scardaci>@ct.infn.it
+ * File:    jOCCIJobControlAdaptor.java
+ * Authors: Giuseppe LA ROCCA
+ * Email:   <giuseppe.larocca>@ct.infn.it
  * Ver.:    1.0.4
- * Date:    23 September 2014
+ * Date:    27 October 2015
  * *********************************************/
 
 public class RunTest 
-{    
+{        
     private static String OCCI_ENDPOINT_HOST = "";
     private static String OCCI_ENDPOINT_PORT = "";
     private static String OCCI_OS = "";
@@ -80,10 +82,11 @@ public class RunTest
     private static String OCCI_VM_TITLE = "";    
     private static String OCCI_PROXY_PATH = "";
     //private static String OCCI_PREFIX = "/usr/local/rvm/gems/ruby-1.9.3-p429/bin";
-    private static String OCCI_PREFIX = "";
+    //private static String OCCI_PREFIX = "";
     
     // Adding FedCloud Contextualisation options here
-    private static String OCCI_CONTEXT_USER_DATA = "";    
+    private static String OCCI_CONTEXT_PUBLICKEY = "";
+    private static String OCCI_CONTEXT_PUBLICKEY_NAME = "";
     
     private static Logger log = Logger.getLogger(RunTest.class);
         
@@ -117,30 +120,26 @@ public class RunTest
         Job job = null;
         String jobId = "";
         
-        // Setting the EGI FedCloud Contextualisation options
-        /*OCCI_CONTEXT_USER_DATA = 
-                "file://" +
-                System.getProperty("user.home") + 
-                System.getProperty("file.separator") +
-                "jsaga-adaptor-jocci" +
-                System.getProperty("file.separator") +
-                "tmpfedcloud.login";*/
+        // Possible values: 'true' and 'false' 
+       OCCI_CONTEXT_PUBLICKEY = "true";
+       // Possible values: 'centos', 'ubuntu', 'root', ...
+       OCCI_CONTEXT_PUBLICKEY_NAME = "centos";
         
         // OCCI_PROXY_PATH (fedcloud.egi.vo)
-        /*OCCI_PROXY_PATH = System.getProperty("user.home") + 
-                          System.getProperty("file.separator") +
-                          "jsaga-adaptor-jocci" +
-                          System.getProperty("file.separator") +
-                          "x509up_u512";*/
-        
-        // OCCI_PROXY_PATH (vo.chain-project.eu)
         OCCI_PROXY_PATH = System.getProperty("user.home") + 
                           System.getProperty("file.separator") +
                           "jsaga-adaptor-jocci" +
                           System.getProperty("file.separator") +
-                          "x509up_u501";
+                          "x509up_u512";
         
-        // OCCI_PROXY_PATH (bes)
+        // OCCI_PROXY_PATH (vo.chain-project.eu)
+        /*OCCI_PROXY_PATH = System.getProperty("user.home") + 
+                          System.getProperty("file.separator") +
+                          "jsaga-adaptor-jocci" +
+                          System.getProperty("file.separator") +
+                          "x509up_u501";*/
+        
+        // OCCI_PROXY_PATH (trainig.egi.eu)
         /*OCCI_PROXY_PATH = System.getProperty("user.home") + 
                           System.getProperty("file.separator") +
                           "jsaga-adaptor-jocci" +
@@ -149,14 +148,14 @@ public class RunTest
         
         try {
             //Create an empty SAGA session            
-            log.info("\nInitialize the security context for the rOCCI JSAGA adaptor");
+            log.info("\nInitialize the security context for the jOCCI JSAGA adaptor");
             session = SessionFactory.createSession(false);
             
             //Modifiy this section according to the A&A schema of your middleware
-            //In this example the rocci A&A schema is used            
+            //In this example the jocci A&A schema is used            
             context = ContextFactory.createContext("jocci");
             
-            // Set teh user proxy
+            // Set the user proxy
             context.setAttribute(Context.USERPROXY, OCCI_PROXY_PATH);            
             
             //Set the public key for SSH connections
@@ -172,14 +171,15 @@ public class RunTest
                     ".ssh/id_rsa");
             
             // Set the userID for SSH connections
-            context.setAttribute(Context.USERID, "root");
+            //context.setAttribute(Context.USERID, "root");
+            context.setAttribute(Context.USERID, OCCI_CONTEXT_PUBLICKEY_NAME);
             
             session.addContext(context);
             
             if (Integer.parseInt (context.getAttribute(Context.LIFETIME))/3600 > 0) 
             {
                 log.info("");
-                log.info("Initializing the security context for the rOCCI JSAGA adaptor [ SUCCESS ] ");
+                log.info("Initializing the security context for the jOCCI JSAGA adaptor [ SUCCESS ] ");
                 log.info("See below security context details... ");
                 log.info("User DN  = " 
                         + context.getAttribute(Context.USERID));            
@@ -205,107 +205,54 @@ public class RunTest
             System.exit(-1);
          }                
         
-        // === OCCI SETTINGS for the CESNET CLOUD RESOURCE === //
+        // === OCCI SETTINGS for the CESNET CLOUD RESOURCE === //        
         OCCI_ENDPOINT_HOST = "jocci://carach5.ics.muni.cz";
         OCCI_ENDPOINT_PORT = "11443";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r' 
-        // os_tpl#uuid_chain_reds_generic_vm_fedcloud_dukan_100 => generic_vm
-        // os_tpl#uuid_chain_reds_octave_fedcloud_dukan_101 => octave
-	// os_tpl#uuid_chain_reds_r_fedcloud_dukan_102 => r
-        // os_tpl#uuid_chain_reds_generic_www_fedcloud_dukan_110 => 'generic_www'
-        OCCI_OS = "uuid_chain_reds_generic_vm_fedcloud_dukan_100";
+        // vo.chain-project.eu
+        // os_tpl#uuid_chain_reds_tthreader_fedcloud_dukan_104
+        // os_tpl#uuid_chain_reds_aleph2000_fedcloud_dukan_105        
+        // os_tpl#uuid_chain_reds_generic_vm_fedcloud_dukan_100
+        // os_tpl#uuid_chain_reds_octave_fedcloud_dukan_101        
+	// os_tpl#uuid_chain_reds_r_fedcloud_dukan_102
+        // os_tpl#uuid_chain_reds_generic_www_fedcloud_dukan_110
+        // os_tpl#uuid_chain_reds_wrf_fedcloud_dukan_103
+        //OCCI_OS = "uuid_chain_reds_octave_fedcloud_dukan_101";
+        // fedcloud.egi.eu
+        // os_tpl#uuid_centos_6_5_minimal_fedcloud_dukan_83
+        // os_tpl#uuid_cernvm_3_3_0_40gb_fedcloud_dukan_80        
+        OCCI_OS = "uuid_egi_centos_6_fedcloud_warg_130";        
         OCCI_FLAVOR = "small";
         
-        // === SETTINGS for the CESGA CLOUD RESOURCE === //
-        //OCCI_ENDPOINT_HOST = "rocci://cloud.cesga.es";        
+        // === SETTINGS for the CESGA CLOUD RESOURCE === //        
+        //OCCI_ENDPOINT_HOST = "jocci://cloud.cesga.es";        
         //OCCI_ENDPOINT_PORT = "3202";
         // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'        
         // os_tpl#uuid_chain_reds_generic_vm_sl6_4_364 => generic_vm
         // os_tpl#uuid_chain_reds_octave_sl6_4_365 => octave
 	// os_tpl#uuid_chain_reds_r_sl6_4_366 => r
         //OCCI_OS = "uuid_chain_reds_generic_vm_sl6_4_364";
+        //OCCI_OS = "uuid_centos5_7_90";
         //OCCI_FLAVOR = "small";
-        
-        // === OCCI SETTINGS for the KTH CLOUD RESOURCE === //
-        //OCCI_ENDPOINT_HOST = "rocci://egi.cloud.pdc.kth.se";
-        //OCCI_ENDPOINT_PORT = "443";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
-        //OCCI_OS = "egi_debian";
-        //OCCI_FLAVOR = "small";
-        
-        // === OCCI SETTINGS for the FZ Jülich CLOUD RESOURCE === //
-        //OCCI_ENDPOINT_HOST = "rocci://egi-cloud.zam.kfa-juelich.de";
-        //OCCI_ENDPOINT_PORT = "8787";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
-        // 053236c6-1eaa-43ec-b738-10dc4969d091 => 'chain-generic'
-        // 464f2315-9f8b-4c8d-9235-1b7a8aa520ed => 'chain-octave'
-        // dc87c573-8f09-46b1-ac0f-8be9743bd74f => 'chain-r'
-        //OCCI_OS = "464f2315-9f8b-4c8d-9235-1b7a8aa520ed";
-        //OCCI_OS = "7ea08f66-04ac-46b0-914c-ae76d0450b00";
-        //OCCI_FLAVOR = "small";
-        
-        // === OCCI SETTINGS for the GRNET CLOUD RESOURCE === //
-        //OCCI_ENDPOINT_HOST = "rocci://okeanos-occi2.hellasgrid.gr";
-        //OCCI_ENDPOINT_PORT = "9000";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
-        // vmcatcher-nkoz0e-virt-octave-3-6-3 => 'octave'
-        // vmcatcher-nkp6v5-generic_www => 'generic_www'
-        // vmcatcher-nkp125-virt-r_2-15-2 => 'r'
-        // vmcatcher-nkoy5z-generic-vm => 'generic-vm'
-        //OCCI_OS = "vmcatcher-nkoy5z-generic-vm";        
-        //OCCI_FLAVOR = "c1r2048d10drbd";
-        
-        // === OCCI SETTINGS for the GWDG CLOUD RESOURCE === //
-        //OCCI_ENDPOINT_HOST = "rocci://occi.cloud.gwdg.de";
-        //OCCI_ENDPOINT_PORT = "3100";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
-        //os_tpl#uuid_fctf_nagios_49
-	//os_tpl#uuid_gwdg_centos_6_5_50
-	//os_tpl#uuid_gwdg_scientific_linux_6_5_54
-	//os_tpl#uuid_gwdg_ubuntu_12_04_4_55
-	//os_tpl#uuid_gwdg_ubuntu_14_04_56
-        //OCCI_OS = "uuid_generic_vm_46";
-        //OCCI_OS = "uuid_gwdg_scientific_linux_6_5_54";
-        //OCCI_FLAVOR = "small";
-        
-        // === OCCI SETTINGS for the VESPA (OpenStack) CLOUD RESOURCE === //
-        //OCCI_ENDPOINT_HOST = "jocci://stack-server-01.cloud.dfa.unict.it";
-        //OCCI_ENDPOINT_PORT = "8787";        
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
-        // os_tpl#5949cec9-dce0-4d6f-9c55-8e46a9c78ee9 ==> generic_vm
-	// os_tpl#0645246b-2937-43c0-9a32-aefaf4123b9c ==> octave
-	// os_tpl#978edc01-b944-4b05-b096-6fc951161a1d ==> r
-        // os_tpl#e2e16362-093d-427e-861a-4102be127112 ==> generic_www
-        //OCCI_OS = "e2e16362-093d-427e-861a-4102be127112";
-        //OCCI_FLAVOR = "m1-medium";
-        
-        // === OCCI SETTINGS for the CATANIA (OpenNebula) CLOUD RESOURCE === //
+                
+        // === OCCI SETTINGS for the CATANIA CLOUD RESOURCE === //        
         //OCCI_ENDPOINT_HOST = "jocci://nebula-server-01.ct.infn.it";
         //OCCI_ENDPOINT_PORT = "9000";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
-        // os_tpl#uuid_generic_vm_19 ==> generic_vm
-	// os_tpl#uuid_octave_20 ==> octave
-	// os_tpl#uuid_r_7 ==> r                
-        // os_tpl#uuid_appwrf_51 ==> wrf
-        // os_tpl#uuid_blender4_61 ==> blender
-        // os_tpl#uuid_tthread_72 ==> tthread_72
-        // os_tpl#uuid_generic_www_35 ==> generic_www
-        //OCCI_OS = "uuid_generic_vm_19";
-        //OCCI_FLAVOR = "small";
+        // vo.chain-project.eu
+        // os_tpl#uuid_chain_reds_generic_vm_centos_6_6_kvm_103
+	// os_tpl#uuid_chain_reds_octave_centos_6_6_kvm_102
+	// os_tpl#uuid_chain_reds_octave_centos_6_6_kvm_102
+        // os_tpl#uuid_chain_reds_wrf_centos_6_6_kvm_105        
+        // os_tpl#uuid_chain_reds_tthreader_scientific_linux_6_5_kvm_108
+        // os_tpl#uuid_chain_reds_generic_www_centos_6_6_kvm_106
+        // os_tpl#uuid_chain_reds_aleph2000_scientific_linux_slc5_11_kvm_104
+        //OCCI_OS = "uuid_chain_reds_generic_vm_centos_6_6_kvm_103";
+        // fedcloud.egi.eu
+        // os_tpl#uuid_centos6_minimal_centos_6_x_kvm_130
+        // os_tpl#uuid_cernvm_scientificlinux_6_0_kvm_119
+        //OCCI_OS = "uuid_cernvm_scientificlinux_6_0_kvm_119";
+        //OCCI_FLAVOR = "medium";
         
-        // === OCCI SETTINGS for the CATANIA (OpenStack) CLOUD RESOURCE === //
-        //OCCI_ENDPOINT_HOST = "jocci://stack-server-01.ct.infn.it";
-        //OCCI_ENDPOINT_PORT = "8787";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
-        // f36b8eb8-8247-4b4f-a101-18c7834009e0 ==> generic_vm
-	// bb623e1c-e693-4c7d-a90f-4e5bf96b4787 ==> octave
-	// 91632086-39ef-4e52-a6d1-0e4f1bf95a7b ==> r        
-        // 6ee0e31b-e066-4d39-86fd-059b1de8c52f ==> WRF
-        // 4ba7c3d0-569e-4b8b-884c-23a5588329a7 ==> TreeThreader        
-        //OCCI_OS = "f36b8eb8-8247-4b4f-a101-18c7834009e0";
-        //OCCI_FLAVOR = "small";
-        
-        // === OCCI SETTINGS for the INFN-BARI (OpenStack) CLOUD RESOURCE === //
+        // === OCCI SETTINGS for the INFN-BARI CLOUD RESOURCE === //        
         //OCCI_ENDPOINT_HOST = "jocci://prisma-cloud.ba.infn.it";
         //OCCI_ENDPOINT_PORT = "8787";
         // Possible OCCI_OS values: 'generic_vm', 'octave', 'r', 'WRF', 'treethreader', 'aleph2000'
@@ -317,10 +264,11 @@ public class RunTest
         // b0df0319-5b5b-41fb-9453-2b578ee875fd => 'WRF'
         // 5f29ab3e-61f3-4f94-815f-3d6bf7a90704 => 'aleph2000'
         // 56c11ccb-c696-4fe6-b061-b5df24913580 => 'generic_www'
+        //OCCI_OS = "38e758ec-0f2c-4cd2-8f2c-40e48c3ed62e";
         //OCCI_OS = "623a86f7-f5f9-4bc7-816a-80e7bd6603ed";
         //OCCI_FLAVOR = "small";
         
-        // === OCCI SETTINGS for the IHEP (OpenStack) CLOUD RESOURCE === //
+        // === OCCI SETTINGS for the IHEP CLOUD RESOURCE === //        
         //OCCI_ENDPOINT_HOST = "jocci://sched02.ihep.ac.cn";
         //OCCI_ENDPOINT_PORT = "8787";
         // Possible OCCI_OS values: 'generic_vm', 'octave', 'r', etc.
@@ -331,22 +279,8 @@ public class RunTest
         // f46671e2-bb12-425c-8ead-ecc9cf2112d1 => 'WRF'        
         //OCCI_OS = "361d991f-fed3-4fb5-b267-5df3913d2b68";
         //OCCI_FLAVOR = "small";
-        
-        // === OCCI SETTINGS for the ALGERIAN (OpenNebula) CLOUD RESOURCE === //
-        //OCCI_ENDPOINT_HOST = "jocci://rocci.grid.arn.dz";
-        //OCCI_ENDPOINT_PORT = "11443";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'        
-        // os_tpl#uuid_generic_vm_32 ==> uuid_generic_vm_32
-	// os_tpl#uuid_virt_octave_34 ==> octave
-	// os_tpl#uuid_virt_r_33 ==> r                
-        // os_tpl#uuid_appwrf_36 ==> wrf
-        // os_tpl#uuid_aleph2k_35 ==> aleph
-        // os_tpl#uuid_generic_vm_32 ==> tthread_72
-        // os_tpl#uuid_generic_www_31 ==> generic_www
-        //OCCI_OS = "uuid_generic_vm_32";
-        //OCCI_FLAVOR = "small";
-        
-        // === OCCI SETTINGS for the CIEMAT (OpenNebula) CLOUD RESOURCE === //
+                
+        // === OCCI SETTINGS for the CIEMAT CLOUD RESOURCE === //        
         //OCCI_ENDPOINT_HOST = "jocci://one01.ciemat.es";
         //OCCI_ENDPOINT_PORT = "11443";
         // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
@@ -357,12 +291,38 @@ public class RunTest
         // os_tpl#uuid_chain_reds_generic_www_29 ==> WWW
         //OCCI_OS = "uuid_chain_reds_generic_www_29";
         //OCCI_FLAVOR = "small";
-                        
-        //OCCI_RESOURCE_ID = "https://nebula-server-01.ct.infn.it:9000/compute/5463";
-        OCCI_VM_TITLE = "jOCCI";
-
-        // Possible ACTION values: 'list', 'describe', 'create' and 'delete'
-        OCCI_ACTION = "create";
+        
+        // === OCCI SETTINGS for INFN-PADOVA-STACK CLOUD RESOURCE === //       
+        /*OCCI_ENDPOINT_HOST = "jocci://egi-cloud.pd.infn.it"; 
+        OCCI_ENDPOINT_PORT = "8787";        
+        OCCI_OS = "55f18599-e863-491a-83d4-28823b0345c0"; // [Debian/7/KVM]_fctf
+        OCCI_FLAVOR = "m1-small";*/
+                
+        //OCCI_ENDPOINT_HOST = "jocci://controller.ceta-ciemat.es";
+        //OCCI_ENDPOINT_PORT = "8787";
+        //OCCI_OS = "225b8e1b-7403-402c-a63f-1ecbbb747db0";
+        //String OCCI_OS = "d8145afb-f820-44d6-96a9-f491939868da";
+        //OCCI_FLAVOR = "m1-small";
+        /* [ controller.ceta-ciemat.es ]
+         * CHAIN-REDS
+         *  225b8e1b-7403-402c-a63f-1ecbbb747db0 => generic_vm
+         *  e0ec1fce-7ff0-410d-b923-bafe90818fe4 => r
+         *  6c4328f9-71db-457f-81d1-1b775c721a23 => octave
+         * FEDCLOUD
+         *  d8145afb-f820-44d6-96a9-f491939868da => Ubuntu/12.04
+         */                 
+                
+       /*OCCI_ENDPOINT_HOST = "jocci://stack-server-02.ct.infn.it";
+       OCCI_ENDPOINT_PORT = "8787";
+       //OCCI_OS = "2a612491-d544-4b9c-af3f-994ac7f61d2a";
+       OCCI_OS = "74f88b3c-a70f-4c2d-9df6-8b2ba766701f"; // [Ubuntu/14.04/KVM]_EGI_fedcloud         
+       OCCI_FLAVOR = "m1-medium";*/
+                                
+       OCCI_VM_TITLE = "jOCCI_";         
+       OCCI_ACTION = "create";
+                
+       BigInteger result = new BigInteger(30, new Random());       
+       OCCI_VM_TITLE += result;
         
         try {    
             log.info("");
@@ -371,47 +331,47 @@ public class RunTest
             // Start OCCI Actions ...
             if (OCCI_ACTION.equals("list")) {
 
-                ServiceURL = OCCI_ENDPOINT_HOST + ":" + 
-                             OCCI_ENDPOINT_PORT + 
-                             System.getProperty("file.separator") + "?" +
-                             "prefix=" + OCCI_PREFIX +
-                             "&user_data=" + OCCI_CONTEXT_USER_DATA +
-                             "&proxy_path=" + OCCI_PROXY_PATH;
+                ServiceURL = OCCI_ENDPOINT_HOST + ":" 
+                            + OCCI_ENDPOINT_PORT 
+                            + System.getProperty("file.separator") + "?"                             
+                            + "credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY 
+                            + "&credentials_publickey_name=" + OCCI_CONTEXT_PUBLICKEY_NAME 
+                            + "&proxy_path=" + OCCI_PROXY_PATH;
             }
             
             else if (OCCI_ACTION.equals("create")) {                
                         
-                        ServiceURL = OCCI_ENDPOINT_HOST + ":" + 
-                                     OCCI_ENDPOINT_PORT + 
-                                     System.getProperty("file.separator") + "?" +
-                                     "prefix=" + OCCI_PREFIX +
-                                     "&attributes_title=" + OCCI_VM_TITLE +
-                                     "&mixin_os_tpl=" + OCCI_OS +
-                                     "&mixin_resource_tpl=" + OCCI_FLAVOR +
-                                     "&user_data=" + OCCI_CONTEXT_USER_DATA +                                     
-                                     "&proxy_path=" + OCCI_PROXY_PATH;
+                        ServiceURL = OCCI_ENDPOINT_HOST + ":" 
+                                    + OCCI_ENDPOINT_PORT 
+                                    + System.getProperty("file.separator") + "?"                                                                      
+                                    + "attributes_title=" + OCCI_VM_TITLE 
+                                    + "&mixin_os_tpl=" + OCCI_OS 
+                                    + "&mixin_resource_tpl=" + OCCI_FLAVOR 
+                                    + "&credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY
+                                    + "&credentials_publickey_name=" + OCCI_CONTEXT_PUBLICKEY_NAME 
+                                    + "&proxy_path=" + OCCI_PROXY_PATH;
             }
             
             else if (OCCI_ACTION.equals("describe")) {
                         
-			ServiceURL = OCCI_ENDPOINT_HOST + ":" + 
-                                     OCCI_ENDPOINT_PORT + 
-                                     System.getProperty("file.separator") + "?" +
-                                     "prefix=" + OCCI_PREFIX +
-                                     "&resourceID=" + OCCI_RESOURCE_ID +
-                                     "&user_data=" + OCCI_CONTEXT_USER_DATA +                                     
-                                     "&proxy_path=" + OCCI_PROXY_PATH;
+			ServiceURL = OCCI_ENDPOINT_HOST + ":" 
+                                    + OCCI_ENDPOINT_PORT 
+                                    + System.getProperty("file.separator") + "?"                                                                     
+                                    + "resourceID=" + OCCI_RESOURCE_ID 
+                                    + "&credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY 
+                                    + "&credentials_publickey_name=" + OCCI_CONTEXT_PUBLICKEY_NAME 
+                                    + "&proxy_path=" + OCCI_PROXY_PATH;
             }
             
             else if (OCCI_ACTION.equals("delete")) {
 
-			ServiceURL = OCCI_ENDPOINT_HOST + ":" + 
-                                     OCCI_ENDPOINT_PORT + 
-                                     System.getProperty("file.separator") + "?" +
-                                     "prefix=" + OCCI_PREFIX +
-                                     "&resourceID=" + OCCI_RESOURCE_ID +
-                                     "&user_data=" + OCCI_CONTEXT_USER_DATA +                                     
-                                     "&proxy_path=" + OCCI_PROXY_PATH;
+			ServiceURL = OCCI_ENDPOINT_HOST + ":" 
+                                + OCCI_ENDPOINT_PORT 
+                                + System.getProperty("file.separator") + "?"                                                                 
+                                + "resourceID=" + OCCI_RESOURCE_ID 
+                                + "&credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY 
+                                + "&credentials_publickey_name=" + OCCI_CONTEXT_PUBLICKEY_NAME 
+                                + "&proxy_path=" + OCCI_PROXY_PATH;
             }            
                                 
             URL serviceURL = URLFactory.createURL(ServiceURL);
@@ -419,7 +379,7 @@ public class RunTest
             service = JobFactory.createJobService(session, serviceURL);  
                         
             // ========================================== //
-            // === SUBMITTING VM using rOCCI standard === //
+            // === SUBMITTING VM using jOCCI standard === //
             // ========================================== //
             
             if (OCCI_ACTION.equals("create")) 
@@ -484,11 +444,11 @@ public class RunTest
                 
                 //Create an empty SAGA session
                 log.info("");
-                log.info("Re-initialize the security context for the rOCCI JSAGA adaptor");
+                log.info("Re-initialize the security context for the jOCCI JSAGA adaptor");
                 session = SessionFactory.createSession(false);
             
                 //Modifiy this section according to the A&A schema of your middleware
-                //In this example the rocci A&A schema is used
+                //In this example the jocci A&A schema is used
                 context = ContextFactory.createContext("jocci");
                 
                 // Set the user proxy
@@ -507,20 +467,21 @@ public class RunTest
                         ".ssh/id_rsa");
                 
                 // Set the userID for SSH connections
-                context.setAttribute(Context.USERID, "root");
+                //context.setAttribute(Context.USERID, "root");
+                context.setAttribute(Context.USERID, OCCI_CONTEXT_PUBLICKEY_NAME);
             
                 session.addContext(context);
             
-                ServiceURL = OCCI_ENDPOINT_HOST + ":" + 
-                             OCCI_ENDPOINT_PORT + 
-                             System.getProperty("file.separator") + "?" +
-                             "prefix=" + OCCI_PREFIX +
-                             "&action=" + OCCI_ACTION + 
-                             "&attributes_title=" + OCCI_VM_TITLE +
-                             "&mixin_os_tpl=" + OCCI_OS +
-                             "&mixin_resource_tpl=" + OCCI_FLAVOR +
-                             "&user_data=" + OCCI_CONTEXT_USER_DATA +
-                             "&proxy_path=" + OCCI_PROXY_PATH;
+                ServiceURL = OCCI_ENDPOINT_HOST + ":" 
+                        + OCCI_ENDPOINT_PORT 
+                        + System.getProperty("file.separator") + "?"                                                                       
+                        + "action=" + OCCI_ACTION 
+                        + "&attributes_title=" + OCCI_VM_TITLE 
+                        + "&mixin_os_tpl=" + OCCI_OS 
+                        + "&mixin_resource_tpl=" + OCCI_FLAVOR 
+                        + "&credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY
+                        + "&credentials_publickey_name=" + OCCI_CONTEXT_PUBLICKEY_NAME 
+                        + "&proxy_path=" + OCCI_PROXY_PATH;
                 
                 serviceURL = URLFactory.createURL(ServiceURL);                
                 JobService service1 = JobFactory.createJobService(session, serviceURL);  

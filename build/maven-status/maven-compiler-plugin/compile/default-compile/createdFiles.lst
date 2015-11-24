@@ -3,7 +3,6 @@ it/infn/ct/jsaga/adaptor/jocci/job/jOCCIJobControlAdaptor$ACTION_TYPE.class
 it/infn/ct/jsaga/adaptor/jocci/jOCCIAdaptorCommon.class
 it/infn/ct/jsaga/adaptor/jocci/job/jOCCIJobControlAdaptor.class
 it/infn/ct/jsaga/adaptor/jocci/data/jOCCIDataAdaptor.class
-it/infn/ct/jsaga/adaptor/jocci/job/jOCCIJobControlAdaptor$1.class
 test/RunTest.class
 it/infn/ct/jsaga/adaptor/jocci/security/jOCCISecurityCredential.class
 it/infn/ct/jsaga/adaptor/jocci/security/jOCCISecurityAdaptor.class

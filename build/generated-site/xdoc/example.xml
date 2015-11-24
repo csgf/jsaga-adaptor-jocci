@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jsaga-default xmlns="http://www.in2p3.fr/jsaga/session">
+<?xml version="1.0" encoding="UTF-8"?><document><body><section name="Configuration example"><p>Configuration used for integration tests of this module</p><source><![CDATA[<jsaga-default xmlns="http://www.in2p3.fr/jsaga/session">
     <contexts>
          <context type="jocci">
             <attribute name="UserProxy" value="${user.home}/.jsaga/contexts/jOCCI/proxy"/>
@@ -21,4 +20,4 @@
     <session>
         <context type="jocci"/>
     </session>
-</jsaga-default>
+</jsaga-default>]]></source></section></body></document>

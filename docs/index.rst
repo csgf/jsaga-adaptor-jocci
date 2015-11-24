@@ -119,6 +119,8 @@ Usage
                    <attribute name="attributes_title" value="jOCCI-VM"/>
                    <attribute name="mixin_os_tpl" value="uuid_chain_reds_generic_vm_fedcloud_dukan_100"/>
                    <attribute name="mixin_resource_tpl" value="small"/>
+                   <attribute name="credentials_publickey" value="true"/>
+                   <attribute name="credentials_publickey_name" value="root"/>
                </job>
             </context>
        </contexts>
@@ -153,7 +155,7 @@ Usage
  jocci.jobservice.url=
         jocci://carach5.ics.muni.cz:11443/?attributes_title=jOCCI-VM&\
         mixin_os_tpl=uuid_chain_reds_generic_vm_fedcloud_dukan_100&\
-        mixin_resource_tpl=small
+        mixin_resource_tpl=small&credentials_publickey=true&credentials_publickey_name=root
 
 - Testing are classified in differents sets:
 
@@ -428,11 +430,14 @@ Contributor(s)
 Please feel free to contact us any time if you have any questions or comments.
 
 .. _INFN: http://www.ct.infn.it/
+.. _CESNET: http://www.cesnet.cz/
 .. _IN2P3: http://www.in2p3.fr/
 
 :Authors:
 
  Roberto BARBERA - Italian National Institute of Nuclear Physics (INFN_),
+ 
+ Michal KIMLE - The National e-Infrastructure for Science, Research, Development and Education in Czech Republic. (CESNET_),
  
  Giuseppe LA ROCCA - Italian National Institute of Nuclear Physics (INFN_),
 

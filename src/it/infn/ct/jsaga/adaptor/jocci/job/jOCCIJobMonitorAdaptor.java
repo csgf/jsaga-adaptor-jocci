@@ -28,7 +28,6 @@ package it.infn.ct.jsaga.adaptor.jocci.job;
 
 import fr.in2p3.jsaga.adaptor.base.usage.U;
 import fr.in2p3.jsaga.adaptor.base.usage.UAnd;
-import fr.in2p3.jsaga.adaptor.base.usage.UOptional;
 import fr.in2p3.jsaga.adaptor.base.usage.Usage;
 import it.infn.ct.jsaga.adaptor.jocci.jOCCIAdaptorCommon;
 
@@ -68,7 +67,9 @@ public class jOCCIJobMonitorAdaptor extends jOCCIAdaptorCommon
   protected static final String ATTRIBUTES_TITLE = "attributes_title";
   protected static final String MIXIN_OS_TPL = "mixin_os_tpl";
   protected static final String MIXIN_RESOURCE_TPL = "mixin_resource_tpl";
-  protected static final String PREFIX = "prefix";  
+  protected static final String CREDENTIALS_PUBLICKEY = "credentials_publickey";
+  protected static final String CREDENTIALS_PUBLICKEY_NAME = "credentials_publickey_name";
+  //protected static final String PREFIX = "prefix";  
   
   private SSHJobMonitorAdaptor sshMonitorAdaptor = 
           new SSHJobMonitorAdaptor();
@@ -208,7 +209,9 @@ public class jOCCIJobMonitorAdaptor extends jOCCIAdaptorCommon
                     .and(new U(ATTRIBUTES_TITLE))
                     .and(new U(MIXIN_OS_TPL))
                     .and(new U(MIXIN_RESOURCE_TPL))
-                    .and(new UOptional(PREFIX))
+                    .and(new U(CREDENTIALS_PUBLICKEY))
+                    .and(new U(CREDENTIALS_PUBLICKEY_NAME))
+                    //.and(new UOptional(PREFIX))
                     .build();
   }
 }

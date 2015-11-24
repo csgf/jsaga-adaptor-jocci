@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="integration.jOCCIExecutionTestSuite$jOCCIJobRunMinimalTest" time="128.914" tests="1" errors="1" skipped="0" failures="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/java/jdk1.7.0/jre/lib/i386"/>
+    <property name="java.vm.version" value="21.0-b17"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="test" value="integration.jOCCIExecutionTestSuite$jOCCIJobRunMinimalTest"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/larocca/MAVEN/jsaga-adaptor-jocci"/>
+    <property name="java.runtime.version" value="1.7.0-b147"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/java/jdk1.7.0/jre/lib/endorsed"/>
+    <property name="os.arch" value="i386"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/opt/apache-maven-3.2.1/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/i386:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot Tiered Compilers"/>
+    <property name="os.version" value="2.6.43.8-1.fc15.i686.PAE"/>
+    <property name="user.home" value="/home/larocca"/>
+    <property name="user.timezone" value="Europe/Vatican"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="user.name" value="larocca"/>
+    <property name="java.class.path" value="/opt/apache-maven-3.2.1/boot/plexus-classworlds-2.5.1.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="/usr/java/jdk1.7.0/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher integration-test -Dtest=integration.jOCCIExecutionTestSuite$jOCCIJobRunMinimalTest"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0"/>
+    <property name="java.ext.dirs" value="/usr/java/jdk1.7.0/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/java/jdk1.7.0/jre/lib/resources.jar:/usr/java/jdk1.7.0/jre/lib/rt.jar:/usr/java/jdk1.7.0/jre/lib/sunrsasign.jar:/usr/java/jdk1.7.0/jre/lib/jsse.jar:/usr/java/jdk1.7.0/jre/lib/jce.jar:/usr/java/jdk1.7.0/jre/lib/charsets.jar:/usr/java/jdk1.7.0/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/opt/apache-maven-3.2.1"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="gnome"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="test_run" classname="integration.jOCCIExecutionTestSuite$jOCCIJobRunMinimalTest" time="128.914">
+    <error message="PermissionDenied: AuthenticationFailed: AuthenticationFailed: Auth fail" type="org.ogf.saga.error.NoSuccessException">org.ogf.saga.error.NoSuccessException: PermissionDenied: AuthenticationFailed: AuthenticationFailed: Auth fail
+	at fr.in2p3.jsaga.impl.job.instance.AbstractSyncJobImpl.doSubmit(AbstractSyncJobImpl.java:274)
+	at fr.in2p3.jsaga.impl.task.AbstractTaskImpl.run(AbstractTaskImpl.java:102)
+	at fr.in2p3.jsaga.impl.job.instance.JobImpl.run(JobImpl.java:47)
+	at org.ogf.saga.job.base.JobBaseTest.runJob(JobBaseTest.java:93)
+	at org.ogf.saga.job.run.MinimalTest.test_run(MinimalTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:264)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:153)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:200)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
+Caused by: org.ogf.saga.error.PermissionDeniedException: AuthenticationFailed: AuthenticationFailed: Auth fail
+	at it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor.submit(jOCCIJobControlAdaptor.java:763)
+	at fr.in2p3.jsaga.impl.job.instance.AbstractSyncJobImpl.doSubmit(AbstractSyncJobImpl.java:247)
+	at fr.in2p3.jsaga.impl.task.AbstractTaskImpl.run(AbstractTaskImpl.java:102)
+	at fr.in2p3.jsaga.impl.job.instance.JobImpl.run(JobImpl.java:47)
+	at org.ogf.saga.job.base.JobBaseTest.runJob(JobBaseTest.java:93)
+	at org.ogf.saga.job.run.MinimalTest.test_run(MinimalTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:264)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:153)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:200)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
+Caused by: org.ogf.saga.error.AuthenticationFailedException: AuthenticationFailed: Auth fail
+	at fr.in2p3.jsaga.adaptor.ssh3.SSHAdaptorAbstract.connect(SSHAdaptorAbstract.java:128)
+	at fr.in2p3.jsaga.adaptor.ssh3.job.SSHJobControlAdaptor.connect(SSHJobControlAdaptor.java:74)
+	at it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor.submit(jOCCIJobControlAdaptor.java:761)
+	at fr.in2p3.jsaga.impl.job.instance.AbstractSyncJobImpl.doSubmit(AbstractSyncJobImpl.java:247)
+	at fr.in2p3.jsaga.impl.task.AbstractTaskImpl.run(AbstractTaskImpl.java:102)
+	at fr.in2p3.jsaga.impl.job.instance.JobImpl.run(JobImpl.java:47)
+	at org.ogf.saga.job.base.JobBaseTest.runJob(JobBaseTest.java:93)
+	at org.ogf.saga.job.run.MinimalTest.test_run(MinimalTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:264)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:153)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:200)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
+Caused by: org.ogf.saga.error.AuthenticationFailedException: Auth fail
+	at fr.in2p3.jsaga.adaptor.ssh3.SSHAdaptorAbstract.connect(SSHAdaptorAbstract.java:122)
+	at fr.in2p3.jsaga.adaptor.ssh3.job.SSHJobControlAdaptor.connect(SSHJobControlAdaptor.java:74)
+	at it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor.submit(jOCCIJobControlAdaptor.java:761)
+	at fr.in2p3.jsaga.impl.job.instance.AbstractSyncJobImpl.doSubmit(AbstractSyncJobImpl.java:247)
+	at fr.in2p3.jsaga.impl.task.AbstractTaskImpl.run(AbstractTaskImpl.java:102)
+	at fr.in2p3.jsaga.impl.job.instance.JobImpl.run(JobImpl.java:47)
+	at org.ogf.saga.job.base.JobBaseTest.runJob(JobBaseTest.java:93)
+	at org.ogf.saga.job.run.MinimalTest.test_run(MinimalTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:264)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:153)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:200)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
+</error>
+    <system-out><![CDATA[[2015-11-24 09:37:12,478]  INFO integration.jOCCIExecutionTestSuite$jOCCIJobRunMinimalTest : test_run running...
+[2015-11-24 09:37:12,496]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:12,502]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Trying to connect to the cloud host [ carach5.ics.muni.cz ] 
+[2015-11-24 09:37:12,502]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:12,502]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : See below the details: 
+[2015-11-24 09:37:12,502]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:12,502]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : ACTION    = create
+[2015-11-24 09:37:12,502]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : RESOURCE  = compute
+[2015-11-24 09:37:12,503]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:12,503]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : AUTH       = x509
+[2015-11-24 09:37:12,503]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : PROXY_PATH = /home/larocca/.jsaga/contexts/jOCCI/proxy
+[2015-11-24 09:37:12,503]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : CA_PATH    = /etc/grid-security/certificates
+[2015-11-24 09:37:12,503]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:12,503]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : HOST        = carach5.ics.muni.cz
+[2015-11-24 09:37:12,503]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : PORT        = 11443
+[2015-11-24 09:37:12,504]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : ENDPOINT    = https://carach5.ics.muni.cz:11443/
+[2015-11-24 09:37:12,504]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : PUBLIC KEY  = /home/larocca/.ssh/id_rsa.pub
+[2015-11-24 09:37:12,504]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : PRIVATE KEY = /home/larocca/.ssh/id_rsa
+[2015-11-24 09:37:12,504]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:12,654]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Creating a new resource using jOCCI-api. Please wait!
+[2015-11-24 09:37:12,654]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : VM Title     = jOCCI-VM
+[2015-11-24 09:37:12,654]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : OS           = uuid_egi_centos_6_fedcloud_warg_130
+[2015-11-24 09:37:12,654]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Flavour      = small
+[2015-11-24 09:37:12,654]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:12,655]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : No contextualization set for the resource.
+[2015-11-24 09:37:15,179]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:15,179]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ TEMPLATES ]
+[2015-11-24 09:37:15,179]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : - Available os templates mixins ...
+[2015-11-24 09:37:15,180]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_umd_sl6_fedcloud_warg_138, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=UMD-SL6@fedcloud-warg, location=/mixin/os_tpl/uuid_umd_sl6_fedcloud_warg_138/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,180]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_egi_docker_ubuntu_server_14_04_lts_fedcloud_warg_146, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=EGI-Docker-Ubuntu-Server-14.04-LTS@fedcloud-warg, location=/mixin/os_tpl/uuid_egi_docker_ubuntu_server_14_04_lts_fedcloud_warg_146/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,180]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_egi_centos_6_fedcloud_warg_130, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=EGI-CentOS-6@fedcloud-warg, location=/mixin/os_tpl/uuid_egi_centos_6_fedcloud_warg_130/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,181]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_egi_fedcloud_clients_fedcloud_warg_128, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=EGI-FedCloud-Clients@fedcloud-warg, location=/mixin/os_tpl/uuid_egi_fedcloud_clients_fedcloud_warg_128/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,181]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_chipster_ubuntu_server_12_04_lts_fedcloud_dukan_96, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=Chipster-Ubuntu-Server-12.04-LTS@fedcloud-dukan, location=/mixin/os_tpl/uuid_chipster_ubuntu_server_12_04_lts_fedcloud_dukan_96/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,181]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_egi_ubuntu_server_14_04_lts_fedcloud_warg_131, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=EGI-Ubuntu-Server-14.04-LTS@fedcloud-warg, location=/mixin/os_tpl/uuid_egi_ubuntu_server_14_04_lts_fedcloud_warg_131/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,182]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_egi_compss_lofar_debian_7_0_x86_64_0001_fedcloud_dukan_113, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=EGI-COMPSs-Lofar-Debian-7.0-x86_64-0001@fedcloud-dukan, location=/mixin/os_tpl/uuid_egi_compss_lofar_debian_7_0_x86_64_0001_fedcloud_dukan_113/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,182]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_centos_6_5_minimal_fedcloud_dukan_83, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=CentOS-6.5-minimal@fedcloud-dukan, location=/mixin/os_tpl/uuid_centos_6_5_minimal_fedcloud_dukan_83/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,182]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_transplant_base_fedcloud_warg_132, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=transPLANT-Base@fedcloud-warg, location=/mixin/os_tpl/uuid_transplant_base_fedcloud_warg_132/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,182]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_ubuntu_server_14_04_lts_fedcloud_dukan_84, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=Ubuntu-Server-14.04-LTS@fedcloud-dukan, location=/mixin/os_tpl/uuid_ubuntu_server_14_04_lts_fedcloud_dukan_84/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,183]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_egi_pmes_14_ubuntu_15_04_x86_64_0001_fedcloud_warg_108, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=EGI-PMES-14-Ubuntu-15.04-x86_64-0001@fedcloud-warg, location=/mixin/os_tpl/uuid_egi_pmes_14_ubuntu_15_04_x86_64_0001_fedcloud_warg_108/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,183]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_dci_bridge_fedcloud_dukan_109, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=DCI-Bridge@fedcloud-dukan, location=/mixin/os_tpl/uuid_dci_bridge_fedcloud_dukan_109/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,183]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_egi_ubuntu_server_12_04_lts_fedcloud_warg_129, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=EGI-Ubuntu-Server-12.04-LTS@fedcloud-warg, location=/mixin/os_tpl/uuid_egi_ubuntu_server_12_04_lts_fedcloud_warg_129/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,183]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_scientific_linux_6_5_fedcloud_dukan_82, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=Scientific-Linux-6.5@fedcloud-dukan, location=/mixin/os_tpl/uuid_scientific_linux_6_5_fedcloud_dukan_82/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,184]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_cernvm_3_3_0_40gb_fedcloud_dukan_80, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=CERNVM-3.3.0-40GB@fedcloud-dukan, location=/mixin/os_tpl/uuid_cernvm_3_3_0_40gb_fedcloud_dukan_80/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,184]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_moinmoinwiki_fedcloud_warg_124, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=MoinMoinWiki@fedcloud-warg, location=/mixin/os_tpl/uuid_moinmoinwiki_fedcloud_warg_124/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,184]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_gcubesmartexecutor_fedcloud_warg_139, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=GCubeSmartExecutor@fedcloud-warg, location=/mixin/os_tpl/uuid_gcubesmartexecutor_fedcloud_warg_139/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,184]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category{term=uuid_ubuntu_server_12_04_lts_fedcloud_dukan_81, scheme=http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#, title=Ubuntu-Server-12.04-LTS@fedcloud-dukan, location=/mixin/os_tpl/uuid_ubuntu_server_12_04_lts_fedcloud_dukan_81/, attributes=SetCover{[]}}
+[2015-11-24 09:37:15,185]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:15,185]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ CREATE ]
+[2015-11-24 09:37:15,187]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category: uuid_egi_centos_6_fedcloud_warg_130;scheme="http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#";class="mixin";title="EGI-CentOS-6@fedcloud-warg";rel="http://schemas.ogf.org/occi/infrastructure#os_tpl";location="/mixin/os_tpl/uuid_egi_centos_6_fedcloud_warg_130/"
+[2015-11-24 09:37:15,198]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:16,065]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ LIST ]
+[2015-11-24 09:37:16,065]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : - Retieve the list of VMs running on the cloud site
+[2015-11-24 09:37:16,066]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : ~ https://carach5.ics.muni.cz:11443/compute/64970
+[2015-11-24 09:37:16,067]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:16,067]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : ================= [ R E P O R T ] =================
+[2015-11-24 09:37:16,067]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:16,068]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ DESCRIPTION ]
+[2015-11-24 09:37:16,068]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : - Getting VM settings for the resource
+[2015-11-24 09:37:16,068]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : https://carach5.ics.muni.cz:11443/compute/64970
+[2015-11-24 09:37:16,534]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Category: compute;scheme="http://schemas.ogf.org/occi/infrastructure#";class="kind"
+Category: uuid_egi_centos_6_fedcloud_warg_130;scheme="http://occi.carach5.ics.muni.cz/occi/infrastructure/os_tpl#";class="mixin"
+Category: compute;scheme="http://opennebula.org/occi/infrastructure#";class="mixin"
+Category: small;scheme="http://schema.fedcloud.egi.eu/occi/infrastructure/resource_tpl#";class="mixin"
+Category: user_data;scheme="http://schemas.openstack.org/compute/instance#";class="mixin"
+X-OCCI-Attribute: occi.compute.cores=1
+X-OCCI-Attribute: occi.compute.memory=2.0
+X-OCCI-Attribute: occi.compute.state="waiting"
+X-OCCI-Attribute: occi.core.id=64970
+X-OCCI-Attribute: occi.core.summary="Instantiated with rOCCI-server on Tue, 24 Nov 2015 09:37:26 +0100."
+X-OCCI-Attribute: occi.core.title="jOCCI-VM"
+X-OCCI-Attribute: org.opennebula.compute.cpu=1.0
+X-OCCI-Attribute: org.opennebula.compute.id=64970
+X-OCCI-Attribute: org.openstack.compute.user_data="I2Nsb3VkLWNvbmZpZwojIHNlZSBodHRwczovL2hlbHAudWJ1bnR1LmNvbS9jb21tdW5pdHkvQ2xvdWRJbml0CgpydW5jbWQ6Ci0gL2Jpbi9lY2hvICdJbnN0YW5jZSBpcyByZWFkeSB0byB1c2UuJyB8IHdhbGwKCg=="
+Link: </network/24>;rel="http://schemas.ogf.org/occi/infrastructure#network";self="/link/networkinterface/compute_64970_nic_0";category="http://schemas.ogf.org/occi/infrastructure#networkinterface http://opennebula.org/occi/infrastructure#networkinterface http://schemas.ogf.org/occi/infrastructure/networkinterface#ipnetworkinterface";occi.core.id="compute_64970_nic_0";occi.core.source="/compute/64970";occi.core.target="/network/24";occi.core.title="public";occi.networkinterface.address="147.228.242.28";occi.networkinterface.interface="eth0";occi.networkinterface.mac="02:00:93:e4:f2:1c";occi.networkinterface.state="inactive";org.opennebula.networkinterface.bridge="onebr0";
+Link: </storage/1539>;rel="http://schemas.ogf.org/occi/infrastructure#storage";self="/link/storagelink/compute_64970_disk_0";category="http://schemas.ogf.org/occi/infrastructure#storagelink http://opennebula.org/occi/infrastructure#storagelink";occi.core.id="compute_64970_disk_0";occi.core.source="/compute/64970";occi.core.target="/storage/1539";occi.core.title="e009209f-b62b-552e-b26c-eef351264f58";occi.storagelink.deviceid="/dev/vda";occi.storagelink.state="inactive";
+[2015-11-24 09:37:16,541]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:16,542]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Waiting the remote VM finishes the boot!
+[2015-11-24 09:37:16,560]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Tue 2015.11.24 at 09:37:15 AM CET
+[2015-11-24 09:37:16,560]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:16,560]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Waiting the status of the following resource becomes ACTIVE
+[2015-11-24 09:37:16,560]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : https://carach5.ics.muni.cz:11443/compute/64970
+[2015-11-24 09:37:16,561]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : This operation may take few minutes to complete. Please wait!
+[2015-11-24 09:37:16,561]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:37:22,562]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = waiting
+[2015-11-24 09:37:28,154]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = waiting
+[2015-11-24 09:37:33,766]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = waiting
+[2015-11-24 09:37:39,342]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = waiting
+[2015-11-24 09:37:44,964]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = waiting
+[2015-11-24 09:37:50,571]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = inactive
+[2015-11-24 09:37:56,131]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = inactive
+[2015-11-24 09:38:01,741]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = inactive
+[2015-11-24 09:38:07,307]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = inactive
+[2015-11-24 09:38:12,884]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = inactive
+[2015-11-24 09:38:13,456]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : [ STATUS ] = active
+[2015-11-24 09:38:13,457]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:38:13,457]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : The compute resource is now active!
+[2015-11-24 09:38:13,457]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : URI = https://carach5.ics.muni.cz:11443/compute/64970
+[2015-11-24 09:38:13,457]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : IP  = 147.228.242.28
+[2015-11-24 09:38:13,457]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : 
+[2015-11-24 09:38:13,458]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Check whether the compute resource has a public IP or not 
+[2015-11-24 09:38:13,458]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : The compute resource has a *public* IP [ 147.228.242.28 ]
+[2015-11-24 09:38:13,458]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Public IP address = 147.228.242.28
+[2015-11-24 09:38:13,458]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Checking for connectivity. Please wait! 
+[2015-11-24 09:38:20,536]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : The destination host is unreachable. Sleeping for a while... 
+[2015-11-24 09:39:20,639]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : SSH daemon has started [ OK ] 
+[2015-11-24 09:39:20,640]  INFO it.infn.ct.jsaga.adaptor.jocci.job.jOCCIJobControlAdaptor : Tue 2015.11.24 at 09:39:20 AM CET
+[2015-11-24 09:39:21,379] DEBUG integration.jOCCIExecutionTestSuite$jOCCIJobRunMinimalTest : test_run - Duration: 128901 ms
+]]></system-out>
+  </testcase>
+</testsuite>

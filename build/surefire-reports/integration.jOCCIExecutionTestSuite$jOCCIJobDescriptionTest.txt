@@ -1,0 +1,151 @@
+-------------------------------------------------------------------------------
+Test set: integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest
+-------------------------------------------------------------------------------
+Tests run: 21, Failures: 0, Errors: 21, Skipped: 0, Time elapsed: 0.522 sec <<< FAILURE! - in integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest
+test_spmdVariation(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.021 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_arguments(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_numberOfProcesses(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_totalPhysicalMemory(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_fileTransfer(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_executable(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_candidateHosts(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_wallTimeLimit(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_cleanup(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_totalCPUTime(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_output(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.003 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_environment(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_totalCPUCount(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_operatingSystemType(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.011 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_threadsPerProcess(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_workingDirectory(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_processesPerHost(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_cpuArchitecture(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.012 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_error(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_input(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+
+test_queue(integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest)  Time elapsed: 0.005 sec  <<< ERROR!
+java.lang.Exception: Test properties file is missing required property: jocci.jobservice.url
+	at org.ogf.saga.JSAGABaseTest.getRequiredProperty(JSAGABaseTest.java:131)
+	at org.ogf.saga.job.base.JobBaseTest.<init>(JobBaseTest.java:60)
+	at org.ogf.saga.job.description.DescriptionTest.<init>(DescriptionTest.java:31)
+	at integration.jOCCIExecutionTestSuite$jOCCIJobDescriptionTest.<init>(jOCCIExecutionTestSuite.java:41)
+

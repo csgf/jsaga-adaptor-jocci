@@ -49,8 +49,8 @@ import java.util.Map;
  * File:    jOCCIJobControlAdaptor.java
  * Authors: Giuseppe LA ROCCA, Diego SCARDACI
  * Email:   <giuseppe.larocca, diego.scardaci>@ct.infn.it
- * Ver.:    1.0.4
- * Date:    24 September 2014
+ * Ver.:    0.0.1
+ * Date:    29 July 2015
  * *********************************************/
 
 public class jOCCIAdaptorCommon extends Object implements ClientAdaptor {
