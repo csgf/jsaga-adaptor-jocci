@@ -116,7 +116,8 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
   protected static final String MIXIN_RESOURCE_TPL = "mixin_resource_tpl";
   protected static final String CREDENTIALS_PUBLICKEY = "credentials_publickey";
   protected static final String CREDENTIALS_PUBLICKEY_NAME = "credentials_publickey_name";
-  //protected static final String PREFIX = "prefix";  
+  protected static final String PROTOCOL = "protocol";  
+  protected static final String NETWORK = "network";
     
   // MAX tentatives before to gave up to connect the VM server.
   private final int MAX_CONNECTIONS = 10;
@@ -129,9 +130,10 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
     
   private SSHJobControlAdaptor sshControlAdaptor = 
             new SSHJobControlAdaptor();
-  
-  //private String prefix = "";
+    
   private String action = "";
+  private String protocol = "";
+  private String network = "";
   private String resource = "";  
   private String auth = "";
   private String attributes_title = "";
@@ -140,6 +142,7 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
   private String Endpoint = "";
   private String OCCI_ENDPOINT_HOST = "";
   private int OCCI_ENDPOINT_PORT;
+  private String OCCI_PUBLIC_NETWORK_ID = "";
   
   // Adding FedCloud Contextualisation options here
   private String context_publickey = "";  
@@ -308,9 +311,10 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                  
     log.info("");
     log.info("Trying to connect to the cloud host [ " + host + " ] ");
-       
-    //prefix = (String) attributes.get(PREFIX);       
+                
     action = (String) attributes.get(ACTION);
+    protocol = (String) attributes.get(PROTOCOL);
+    network = (String) attributes.get(NETWORK);
     auth = (String) attributes.get(AUTH);
     resource = (String) attributes.get(RESOURCE);
     attributes_title = (String) attributes.get(ATTRIBUTES_TITLE);
@@ -327,19 +331,25 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
         prefix += System.getProperty("file.separator");
     else prefix = "";*/
               
-    Endpoint = "https://" 
+    /*Endpoint = "https://" 
         + host + ":" + port 
-        + System.getProperty("file.separator");
+        + System.getProperty("file.separator");*/
+    
+    Endpoint = protocol 
+                  + host + ":" + port 
+                  + System.getProperty("file.separator");
        
     OCCI_ENDPOINT_HOST = host;
     OCCI_ENDPOINT_PORT = port;
+    OCCI_PUBLIC_NETWORK_ID = network;
       
     log.info("");
     log.info("See below the details: ");
-    log.info("");
-    //log.info("PREFIX    = " + prefix);
-    log.info("ACTION    = " + action);
-    log.info("RESOURCE  = " + resource);
+    log.info("");    
+    log.info("ACTION      = " + action);
+    log.info("PROTOCOL    = " + protocol);
+    log.info("NETWORK     = " + network);
+    log.info("RESOURCE    = " + resource);
        
     log.info("");
     log.info("AUTH       = " + auth);       
@@ -444,7 +454,12 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
             new VOMSAuthentication(user_cred);
                                 
         authentication.setCAPath(ca_path);
-        Client client = new HTTPClient(URI.create("https://"
+        /*Client client = new HTTPClient(URI.create("https://"
+            + OCCI_ENDPOINT_HOST + ":"
+            + OCCI_ENDPOINT_PORT),
+            authentication, MediaType.TEXT_PLAIN, false);*/
+        
+        Client client = new HTTPClient(URI.create(protocol
             + OCCI_ENDPOINT_HOST + ":"
             + OCCI_ENDPOINT_PORT),
             authentication, MediaType.TEXT_PLAIN, false);
@@ -523,7 +538,12 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
             new VOMSAuthentication(user_cred);
                 
             authentication.setCAPath(ca_path);
-            Client client = new HTTPClient(URI.create("https://"
+            /*Client client = new HTTPClient(URI.create("https://"
+                + OCCI_ENDPOINT_HOST + ":"
+                + OCCI_ENDPOINT_PORT),
+                authentication, MediaType.TEXT_PLAIN, false);*/
+            
+            Client client = new HTTPClient(URI.create(protocol
                 + OCCI_ENDPOINT_HOST + ":"
                 + OCCI_ENDPOINT_PORT),
                 authentication, MediaType.TEXT_PLAIN, false);
@@ -574,17 +594,17 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                     
                 // Getting the list of available running resources
                 List<URI> list = client.list();                                        
-                                                                                
+                URI uri_location = list.get(0);                                                                
                 // Listing all the active resources
-                URI uri_location = null;
+                //URI uri_location = null;
                 log.info("[ LIST ]");
                 log.info("- Retieve the list of VMs running on the cloud site");
 
                 for (URI uri : list) {
-                    if (uri.toString().contains("compute")) {
+                    if (uri.toString().contains("compute")) //{
                         log.info("~ " + uri);
-                        uri_location = uri;                                
-                    }
+                        //uri_location = uri;
+                    //}
                  }
 
                  log.info("");
@@ -616,7 +636,7 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                  log.info("");
                  
                  try {
-                    Thread.sleep(6000);
+                    Thread.sleep(60000);
                  } catch (InterruptedException ex) { 
                     java.util.logging.Logger
                         .getLogger(jOCCIJobControlAdaptor.class.getName())
@@ -640,6 +660,14 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                         log.info("[ STATUS ] = "
                             + entities.get(0)
                               .getValue(Compute.STATE_ATTRIBUTE_NAME));
+                        
+                        try {
+                            Thread.sleep(30000);
+                        } catch (InterruptedException ex) { 
+                            java.util.logging.Logger
+                            .getLogger(jOCCIJobControlAdaptor.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                        }
                                 
                             // Getting IP address and NetworkLocation 
                             // of the resource
@@ -665,13 +693,22 @@ public class jOCCIJobControlAdaptor extends jOCCIAdaptorCommon
                                 if (!uris.isEmpty()) {
                                     // Listing networks
                                     for (URI uri : uris) {
-                                        if ((uri.toString()).contains("public"))
+                                        //if ((uri.toString()).contains("public"))
+                                        if ((uri.toString()).contains(OCCI_PUBLIC_NETWORK_ID))
                                             public_network = uri.toString();
                                         
                                         log.info("NetworkID = " + uri.toString());
                                     }
                                 }
-                                    
+                                
+                                try {
+                                    Thread.sleep(5000);
+                                } catch (InterruptedException ex) {
+                                    java.util.logging.Logger
+                                            .getLogger(jOCCIJobControlAdaptor.class.getName())
+                                            .log(Level.SEVERE, null, ex);
+                                }
+                                
                                 if (public_network != null && !public_network.isEmpty()) 
                                 {
                                     log.info("");

@@ -81,12 +81,13 @@ public class RunTest
     private static String OCCI_RESOURCE_ID = "";
     private static String OCCI_VM_TITLE = "";    
     private static String OCCI_PROXY_PATH = "";
-    //private static String OCCI_PREFIX = "/usr/local/rvm/gems/ruby-1.9.3-p429/bin";
-    //private static String OCCI_PREFIX = "";
+    //private static String OCCI_PREFIX = "/usr/local/rvm/gems/ruby-1.9.3-p429/bin";    
+    private static String OCCI_PROTOCOL = "";
     
     // Adding FedCloud Contextualisation options here
     private static String OCCI_CONTEXT_PUBLICKEY = "";
     private static String OCCI_CONTEXT_PUBLICKEY_NAME = "";
+    private static String OCCI_PUBLIC_NETWORK_ID = "";
     
     private static Logger log = Logger.getLogger(RunTest.class);
         
@@ -122,8 +123,10 @@ public class RunTest
         
         // Possible values: 'true' and 'false' 
        OCCI_CONTEXT_PUBLICKEY = "true";
-       // Possible values: 'centos', 'ubuntu', 'root', ...
+       // Possible values: 'centos', 'ubuntu', 'root', 'cloud-user', ...
        OCCI_CONTEXT_PUBLICKEY_NAME = "centos";
+       // Public Network ID
+       OCCI_PUBLIC_NETWORK_ID = "public";
         
         // OCCI_PROXY_PATH (fedcloud.egi.vo)
         OCCI_PROXY_PATH = System.getProperty("user.home") + 
@@ -206,8 +209,9 @@ public class RunTest
          }                
         
         // === OCCI SETTINGS for the CESNET CLOUD RESOURCE === //        
-        OCCI_ENDPOINT_HOST = "jocci://carach5.ics.muni.cz";
-        OCCI_ENDPOINT_PORT = "11443";
+        //OCCI_ENDPOINT_HOST = "jocci://carach5.ics.muni.cz";
+        //OCCI_ENDPOINT_PORT = "11443";
+        //OCCI_PROTOCOL = "https://";
         // vo.chain-project.eu
         // os_tpl#uuid_chain_reds_tthreader_fedcloud_dukan_104
         // os_tpl#uuid_chain_reds_aleph2000_fedcloud_dukan_105        
@@ -217,26 +221,14 @@ public class RunTest
         // os_tpl#uuid_chain_reds_generic_www_fedcloud_dukan_110
         // os_tpl#uuid_chain_reds_wrf_fedcloud_dukan_103
         //OCCI_OS = "uuid_chain_reds_octave_fedcloud_dukan_101";
-        // fedcloud.egi.eu
-        // os_tpl#uuid_centos_6_5_minimal_fedcloud_dukan_83
-        // os_tpl#uuid_cernvm_3_3_0_40gb_fedcloud_dukan_80        
-        OCCI_OS = "uuid_egi_centos_6_fedcloud_warg_130";        
-        OCCI_FLAVOR = "small";
-        
-        // === SETTINGS for the CESGA CLOUD RESOURCE === //        
-        //OCCI_ENDPOINT_HOST = "jocci://cloud.cesga.es";        
-        //OCCI_ENDPOINT_PORT = "3202";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'        
-        // os_tpl#uuid_chain_reds_generic_vm_sl6_4_364 => generic_vm
-        // os_tpl#uuid_chain_reds_octave_sl6_4_365 => octave
-	// os_tpl#uuid_chain_reds_r_sl6_4_366 => r
-        //OCCI_OS = "uuid_chain_reds_generic_vm_sl6_4_364";
-        //OCCI_OS = "uuid_centos5_7_90";
-        //OCCI_FLAVOR = "small";
+        // fedcloud.egi.eu               
+        //OCCI_OS = "uuid_egi_centos_6_fedcloud_warg_130";        
+        //OCCI_FLAVOR = "small";                       
                 
         // === OCCI SETTINGS for the CATANIA CLOUD RESOURCE === //        
         //OCCI_ENDPOINT_HOST = "jocci://nebula-server-01.ct.infn.it";
         //OCCI_ENDPOINT_PORT = "9000";
+        //OCCI_PROTOCOL = "https://";
         // vo.chain-project.eu
         // os_tpl#uuid_chain_reds_generic_vm_centos_6_6_kvm_103
 	// os_tpl#uuid_chain_reds_octave_centos_6_6_kvm_102
@@ -250,11 +242,13 @@ public class RunTest
         // os_tpl#uuid_centos6_minimal_centos_6_x_kvm_130
         // os_tpl#uuid_cernvm_scientificlinux_6_0_kvm_119
         //OCCI_OS = "uuid_cernvm_scientificlinux_6_0_kvm_119";
+        //OCCI_OS = "uuid_centos6_minimal_centos_6_x_kvm_130";
         //OCCI_FLAVOR = "medium";
         
         // === OCCI SETTINGS for the INFN-BARI CLOUD RESOURCE === //        
-        //OCCI_ENDPOINT_HOST = "jocci://prisma-cloud.ba.infn.it";
+        //OCCI_ENDPOINT_HOST = "jocci://prisma-cloud.ba.infn.it";        
         //OCCI_ENDPOINT_PORT = "8787";
+        //OCCI_PROTOCOL = "http://";
         // Possible OCCI_OS values: 'generic_vm', 'octave', 'r', 'WRF', 'treethreader', 'aleph2000'
         // 623a86f7-f5f9-4bc7-816a-80e7bd6603ed => 'generic-vm'
         // 4aca9ee4-8638-4f95-824f-5128e8b0e90f => 'octave'
@@ -267,42 +261,28 @@ public class RunTest
         //OCCI_OS = "38e758ec-0f2c-4cd2-8f2c-40e48c3ed62e";
         //OCCI_OS = "623a86f7-f5f9-4bc7-816a-80e7bd6603ed";
         //OCCI_FLAVOR = "small";
-        
-        // === OCCI SETTINGS for the IHEP CLOUD RESOURCE === //        
-        //OCCI_ENDPOINT_HOST = "jocci://sched02.ihep.ac.cn";
-        //OCCI_ENDPOINT_PORT = "8787";
-        // Possible OCCI_OS values: 'generic_vm', 'octave', 'r', etc.
-        // 361d991f-fed3-4fb5-b267-5df3913d2b68 => 'generic-vm'
-        // 3ade7193-5db3-4e9c-87fb-3f9b059620f9 => 'octave'
-        // f1514748-66f0-4c1e-a169-2526f5f953d3 => 'r'
-        // 37824c4f-1945-4ff7-b809-2c275f4396aa => 'generic_www'
-        // f46671e2-bb12-425c-8ead-ecc9cf2112d1 => 'WRF'        
-        //OCCI_OS = "361d991f-fed3-4fb5-b267-5df3913d2b68";
-        //OCCI_FLAVOR = "small";
-                
+                       
         // === OCCI SETTINGS for the CIEMAT CLOUD RESOURCE === //        
-        //OCCI_ENDPOINT_HOST = "jocci://one01.ciemat.es";
-        //OCCI_ENDPOINT_PORT = "11443";
-        // Possible OCCI_OS values: 'generic_vm', 'octave' and 'r'
-        // os_tpl#uuid_chain_reds_generic_vm_25 ==> generic_vm        
-	// os_tpl#uuid_chain_reds_octave_28 ==> octave
-	// os_tpl#uuid_chain_reds_r_27 ==> r     
-        // os_tpl#uuid_chain_reds_wrf_24 ==> WRF
-        // os_tpl#uuid_chain_reds_generic_www_29 ==> WWW
-        //OCCI_OS = "uuid_chain_reds_generic_www_29";
-        //OCCI_FLAVOR = "small";
+        OCCI_ENDPOINT_HOST = "jocci://cloud.cesga.es";
+        OCCI_ENDPOINT_PORT = "3202";
+        OCCI_PROTOCOL = "https://";
+        //OCCI_OS = "uuid_basic_centos_6_minimal_271";
+        OCCI_OS = "uuid_centos5_7_90";
+        OCCI_FLAVOR = "small";
         
         // === OCCI SETTINGS for INFN-PADOVA-STACK CLOUD RESOURCE === //       
         /*OCCI_ENDPOINT_HOST = "jocci://egi-cloud.pd.infn.it"; 
-        OCCI_ENDPOINT_PORT = "8787";        
-        OCCI_OS = "55f18599-e863-491a-83d4-28823b0345c0"; // [Debian/7/KVM]_fctf
+        OCCI_ENDPOINT_PORT = "8787";      
+        OCCI_PROTOCOL = "https://";
+        //OCCI_OS = "55f18599-e863-491a-83d4-28823b0345c0"; // [Debian/7/KVM]_fctf
+        OCCI_OS = "556b231f-1daf-4bbf-b172-fb950da9c330"; //[CentOS/6/KVM]_fctf
         OCCI_FLAVOR = "m1-small";*/
                 
-        //OCCI_ENDPOINT_HOST = "jocci://controller.ceta-ciemat.es";
-        //OCCI_ENDPOINT_PORT = "8787";
-        //OCCI_OS = "225b8e1b-7403-402c-a63f-1ecbbb747db0";
-        //String OCCI_OS = "d8145afb-f820-44d6-96a9-f491939868da";
-        //OCCI_FLAVOR = "m1-small";
+        /*OCCI_ENDPOINT_HOST = "jocci://controller.ceta-ciemat.es";
+        OCCI_ENDPOINT_PORT = "8787";
+        OCCI_PROTOCOL = "https://";
+        OCCI_OS = "d8145afb-f820-44d6-96a9-f491939868da";
+        OCCI_FLAVOR = "m1-small";*/
         /* [ controller.ceta-ciemat.es ]
          * CHAIN-REDS
          *  225b8e1b-7403-402c-a63f-1ecbbb747db0 => generic_vm
@@ -310,12 +290,15 @@ public class RunTest
          *  6c4328f9-71db-457f-81d1-1b775c721a23 => octave
          * FEDCLOUD
          *  d8145afb-f820-44d6-96a9-f491939868da => Ubuntu/12.04
-         */                 
+         */                         
                 
        /*OCCI_ENDPOINT_HOST = "jocci://stack-server-02.ct.infn.it";
        OCCI_ENDPOINT_PORT = "8787";
-       //OCCI_OS = "2a612491-d544-4b9c-af3f-994ac7f61d2a";
-       OCCI_OS = "74f88b3c-a70f-4c2d-9df6-8b2ba766701f"; // [Ubuntu/14.04/KVM]_EGI_fedcloud         
+       OCCI_PROTOCOL = "http://";
+       // - [CentOS/6/KVM]_EGI_fedcloud (OK), OCCI_PUBLICKEY_NAME=centos
+       OCCI_OS = "2a612491-d544-4b9c-af3f-994ac7f61d2a"; 
+       // - [Ubuntu/14.04/KVM]_EGI_fedcloud (OK), OCCI_PUBLICKEY_NAME=ubuntu
+       //OCCI_OS = "74f88b3c-a70f-4c2d-9df6-8b2ba766701f";
        OCCI_FLAVOR = "m1-medium";*/
                                 
        OCCI_VM_TITLE = "jOCCI_";         
@@ -333,8 +316,10 @@ public class RunTest
 
                 ServiceURL = OCCI_ENDPOINT_HOST + ":" 
                             + OCCI_ENDPOINT_PORT 
-                            + System.getProperty("file.separator") + "?"                             
-                            + "credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY 
+                            + System.getProperty("file.separator") + "?"   
+                            + "protocol=" + OCCI_PROTOCOL
+                            + "&network=" + OCCI_PUBLIC_NETWORK_ID
+                            + "&credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY 
                             + "&credentials_publickey_name=" + OCCI_CONTEXT_PUBLICKEY_NAME 
                             + "&proxy_path=" + OCCI_PROXY_PATH;
             }
@@ -343,8 +328,10 @@ public class RunTest
                         
                         ServiceURL = OCCI_ENDPOINT_HOST + ":" 
                                     + OCCI_ENDPOINT_PORT 
-                                    + System.getProperty("file.separator") + "?"                                                                      
-                                    + "attributes_title=" + OCCI_VM_TITLE 
+                                    + System.getProperty("file.separator") + "?"
+                                    + "protocol=" + OCCI_PROTOCOL
+                                    + "&network=" + OCCI_PUBLIC_NETWORK_ID
+                                    + "&attributes_title=" + OCCI_VM_TITLE 
                                     + "&mixin_os_tpl=" + OCCI_OS 
                                     + "&mixin_resource_tpl=" + OCCI_FLAVOR 
                                     + "&credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY
@@ -356,8 +343,10 @@ public class RunTest
                         
 			ServiceURL = OCCI_ENDPOINT_HOST + ":" 
                                     + OCCI_ENDPOINT_PORT 
-                                    + System.getProperty("file.separator") + "?"                                                                     
-                                    + "resourceID=" + OCCI_RESOURCE_ID 
+                                    + System.getProperty("file.separator") + "?"
+                                    + "protocol=" + OCCI_PROTOCOL
+                                    + "&network=" + OCCI_PUBLIC_NETWORK_ID
+                                    + "&resourceID=" + OCCI_RESOURCE_ID 
                                     + "&credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY 
                                     + "&credentials_publickey_name=" + OCCI_CONTEXT_PUBLICKEY_NAME 
                                     + "&proxy_path=" + OCCI_PROXY_PATH;
@@ -367,8 +356,10 @@ public class RunTest
 
 			ServiceURL = OCCI_ENDPOINT_HOST + ":" 
                                 + OCCI_ENDPOINT_PORT 
-                                + System.getProperty("file.separator") + "?"                                                                 
-                                + "resourceID=" + OCCI_RESOURCE_ID 
+                                + System.getProperty("file.separator") + "?"  
+                                + "protocol=" + OCCI_PROTOCOL
+                                + "&network=" + OCCI_PUBLIC_NETWORK_ID
+                                + "&resourceID=" + OCCI_RESOURCE_ID 
                                 + "&credentials_publickey=" + OCCI_CONTEXT_PUBLICKEY 
                                 + "&credentials_publickey_name=" + OCCI_CONTEXT_PUBLICKEY_NAME 
                                 + "&proxy_path=" + OCCI_PROXY_PATH;
@@ -475,7 +466,9 @@ public class RunTest
                 ServiceURL = OCCI_ENDPOINT_HOST + ":" 
                         + OCCI_ENDPOINT_PORT 
                         + System.getProperty("file.separator") + "?"                                                                       
-                        + "action=" + OCCI_ACTION 
+                        + "protocol=" + OCCI_PROTOCOL
+                        + "&network=" + OCCI_PUBLIC_NETWORK_ID
+                        + "&action=" + OCCI_ACTION 
                         + "&attributes_title=" + OCCI_VM_TITLE 
                         + "&mixin_os_tpl=" + OCCI_OS 
                         + "&mixin_resource_tpl=" + OCCI_FLAVOR 
